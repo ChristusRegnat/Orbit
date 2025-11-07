@@ -8,4 +8,9 @@ offset_bottom = 213.0
 text = "Bazinga
 Test Edit :)
 Testing!"
+Testing!
+
+Daniel!"
 metadata/_edit_use_anchors_ = true
+
+[node name="Bruch" type="Node" parent="TextEdit"]
