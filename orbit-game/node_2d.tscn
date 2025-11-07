@@ -3,6 +3,8 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="TextEdit" type="TextEdit" parent="."]
-offset_right = 343.0
-offset_bottom = 213.0
-text = "Bazinga"
+offset_left = -111.0
+offset_top = -97.0
+offset_right = 157.0
+offset_bottom = -26.0
+text = "michaaellllllllllll"
