@@ -5,4 +5,5 @@
 [node name="TextEdit" type="TextEdit" parent="."]
 offset_right = 343.0
 offset_bottom = 213.0
-text = "Bazinga"
+text = "Bazinga
+Test Edit :)"
