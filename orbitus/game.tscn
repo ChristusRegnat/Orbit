@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://mao1pu1ldjj1"]
+[gd_scene load_steps=14 format=3 uid="uid://mao1pu1ldjj1"]
 
 [ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://path_1_follow.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://c170egulbmhw6" path="res://path_1_trace.gd" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://bb1hsad2dgky7" path="res://ship.gd" id="3_feb5d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mwb40"]
 
@@ -23,9 +24,21 @@ point_count = 5
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_eow3j"]
 gradient = SubResource("Gradient_ryrav")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e2o6t"]
+
+[sub_resource type="Gradient" id="Gradient_e2o6t"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_feb5d"]
+gradient = SubResource("Gradient_e2o6t")
+width = 17
+height = 24
+fill_from = Vector2(1, 0.24766356)
+fill_to = Vector2(1, 1)
+
 [node name="Game" type="Node2D"]
 
 [node name="Earth" type="StaticBody2D" parent="."]
+scale = Vector2(2.425, 2.425)
 
 [node name="Earth_Collision" type="CollisionShape2D" parent="Earth"]
 scale = Vector2(3, 3)
@@ -38,6 +51,7 @@ texture = SubResource("GradientTexture2D_e2o6t")
 [node name="Game_Cam" type="Camera2D" parent="."]
 
 [node name="Path1" type="Path2D" parent="."]
+scale = Vector2(2.425, 2.425)
 curve = SubResource("Curve2D_e2o6t")
 
 [node name="Path1_Trace" type="Line2D" parent="Path1"]
@@ -56,6 +70,16 @@ shape = SubResource("CircleShape2D_feb5d")
 [node name="Sprite2D" type="Sprite2D" parent="Path1/Path1_Follow/Planet1/Planet1_Collisions"]
 scale = Vector2(0.22, 0.22)
 texture = SubResource("GradientTexture2D_eow3j")
+
+[node name="Ship" type="CharacterBody2D" parent="."]
+script = ExtResource("3_feb5d")
+turn_speed = 10.0
+
+[node name="Ship_Collision" type="CollisionShape2D" parent="Ship"]
+shape = SubResource("CapsuleShape2D_e2o6t")
+
+[node name="Ship_Sprite" type="Sprite2D" parent="Ship/Ship_Collision"]
+texture = SubResource("GradientTexture2D_feb5d")
 
 [connection signal="area_shape_entered" from="Path1/Path1_Follow/Planet1" to="Path1/Path1_Follow/Planet1" method="_on_area_shape_entered"]
 [connection signal="body_entered" from="Path1/Path1_Follow/Planet1" to="Path1/Path1_Follow/Planet1" method="_on_body_entered"]
