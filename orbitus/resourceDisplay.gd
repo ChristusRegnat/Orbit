@@ -103,3 +103,5 @@ func set_resource(name: String, amount: int, icon: Texture2D = null):
 # Getter function for other scripts to access the current amount
 func get_amount() -> int:
 	return current_amount
+
+#Utilized DeepSeek for GodotScript programming assistance
