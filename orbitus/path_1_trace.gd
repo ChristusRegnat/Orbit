@@ -4,8 +4,8 @@ extends Line2D
 
 func _ready():
 	# Set Line2D properties (color, width)
-	default_color = Color(0.0, 0.171, 1.0, 1.0) # White, opaque
-	width = 5 # Adjust as needed
+	default_color = Color(0.0, 0.173, 1.0, 0.196)
+	width = 2 # Adjust as needed
 
 		# Add points from the Path2D's curve
 	if path_2d and path_2d.curve:
