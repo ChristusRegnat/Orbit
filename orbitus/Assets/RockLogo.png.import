@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjeqafkgf7qet"
-path="res://.godot/imported/Copilot_OrbitLogo.png-69f67a96c1846f10d23360b82022e508.ctex"
+uid="uid://di8aggh1dlan4"
+path="res://.godot/imported/RockLogo.png-6452d3865f9f48e26d950557ec814079.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Copilot_OrbitLogo.png"
-dest_files=["res://.godot/imported/Copilot_OrbitLogo.png-69f67a96c1846f10d23360b82022e508.ctex"]
+source_file="res://Assets/RockLogo.png"
+dest_files=["res://.godot/imported/RockLogo.png-6452d3865f9f48e26d950557ec814079.ctex"]
 
 [params]
 
