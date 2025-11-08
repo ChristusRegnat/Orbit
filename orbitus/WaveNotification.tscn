@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dga3uyw3bhr2p"]
+
+[ext_resource type="Script" uid="uid://y5slsrod3fq0" path="res://WaveNotification.gd" id="1_0arw7"]
+
+[node name="WaveNotification" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0arw7")
+
+[node name="NotificationLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "WAVE STARTED!"
+horizontal_alignment = 1
