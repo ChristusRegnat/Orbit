@@ -1,18 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://crbm2aq408enm"]
 
 [ext_resource type="Script" uid="uid://c8pjtt2miwdia" path="res://Scenes/end_game_screen.gd" id="1_64ufq"]
-[ext_resource type="Texture2D" uid="uid://blljrt7sgxjyo" path="res://Assets/MenuImage.jpg" id="2_4xkc4"]
+[ext_resource type="Texture2D" uid="uid://blljrt7sgxjyo" path="res://Assets/BackgroundImage.jpg" id="2_4xkc4"]
 
 [node name="EndGameScreen" type="Node2D"]
 script = ExtResource("1_64ufq")
 
-[node name="MenuImage" type="Sprite2D" parent="."]
+[node name="BackgrooundImage" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.6)
 position = Vector2(576, 324)
 texture = ExtResource("2_4xkc4")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 1152.0
@@ -29,10 +29,23 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][b]Game Over![/b][/center]
+
+
+
+
+
+
+
+
+"
+fit_content = true
+
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Restart"
-
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
