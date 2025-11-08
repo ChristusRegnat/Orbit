@@ -16,7 +16,7 @@ signal resources_changed(resources_dict)
 func _ready():
 	# Load icons with error handling
 	var gold_icon = _load_icon("res://Assets/Resources/gold.png")
-	var steel_icon = _load_icon("res://Assets/Resources/kyber.png")  # Note: using kyber.png for steel
+	var steel_icon = _load_icon("res://Assets/Resources/kyber_2.png")  # Note: using kyber.png for steel
 	var spice_icon = _load_icon("res://Assets/Resources/spice_resized.png")
 	var aether_icon = _load_icon("res://Assets/Resources/aether_resized.png")
 	
@@ -143,3 +143,5 @@ func toggle_visibility():
 # Get all resources as a dictionary
 func get_all_resources() -> Dictionary:
 	return resources.duplicate()
+
+#Utilized DeepSeek for GodotScript programming assistance
