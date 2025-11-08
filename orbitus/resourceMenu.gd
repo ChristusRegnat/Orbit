@@ -75,3 +75,5 @@ func _get_display_for_resource(resource_name: String):
 # Function to show/hide the menu
 func toggle_visibility():
 	visible = !visible
+	
+#Utilized DeepSeek for GodotScript programming assistance
