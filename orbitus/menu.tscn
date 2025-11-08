@@ -16,6 +16,12 @@ point_count = 5
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_lti8b")
 
+[node name="MenuImage" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.6)
+z_index = -2
+position = Vector2(576, 324)
+texture = ExtResource("5_ytr4m")
+
 [node name="MainMenuControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -28,9 +34,9 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 40
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 40
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenuControl/MarginContainer"]
@@ -39,11 +45,30 @@ alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuControl/MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
+size_flags_vertical = 8
 alignment = 1
 
+[node name="Earth_Sprite" type="Sprite2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
+position = Vector2(37.00003, -160.99997)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("3_ecwwl")
+
+[node name="Path1" type="Path2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
+position = Vector2(37, -161)
+curve = SubResource("Curve2D_ecwwl")
+
+[node name="Path1_Follow" type="PathFollow2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer/Path1"]
+position = Vector2(120, 0)
+rotation = 1.5707964
+script = ExtResource("3_4hy44")
+
+[node name="Planet1_Sprite" type="Sprite2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer/Path1/Path1_Follow"]
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("6_kk3ma")
+
 [node name="Logo" type="Sprite2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
-position = Vector2(267, 111)
+position = Vector2(37, -395)
 texture = ExtResource("2_4hy44")
 
 [node name="PlayButton" type="Button" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
@@ -57,34 +82,6 @@ text = "Options"
 [node name="QuitButton" type="Button" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
-
-[node name="CenterContainer" type="CenterContainer" parent="MainMenuControl/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Earth_Sprite" type="Sprite2D" parent="MainMenuControl/MarginContainer/HBoxContainer/CenterContainer"]
-position = Vector2(275, 290)
-scale = Vector2(0.66, 0.66)
-texture = ExtResource("3_ecwwl")
-
-[node name="Path1" type="Path2D" parent="MainMenuControl/MarginContainer/HBoxContainer/CenterContainer"]
-position = Vector2(275, 290)
-curve = SubResource("Curve2D_ecwwl")
-
-[node name="Path1_Follow" type="PathFollow2D" parent="MainMenuControl/MarginContainer/HBoxContainer/CenterContainer/Path1"]
-position = Vector2(120, 0)
-rotation = 1.5707964
-script = ExtResource("3_4hy44")
-
-[node name="Planet1_Sprite" type="Sprite2D" parent="MainMenuControl/MarginContainer/HBoxContainer/CenterContainer/Path1/Path1_Follow"]
-scale = Vector2(0.21, 0.21)
-texture = ExtResource("6_kk3ma")
-
-[node name="MenuImage" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.6)
-z_index = -2
-position = Vector2(576, 324)
-texture = ExtResource("5_ytr4m")
 
 [connection signal="pressed" from="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
