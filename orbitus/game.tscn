@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://mao1pu1ldjj1"]
+[gd_scene load_steps=10 format=3 uid="uid://mao1pu1ldjj1"]
 
 [ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://path_1_follow.gd" id="1_80nbo"]
-[ext_resource type="Script" uid="uid://br4j3qeanbl7w" path="res://d.gd" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://c170egulbmhw6" path="res://path_1_trace.gd" id="2_e2o6t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mwb40"]
 
@@ -23,8 +23,6 @@ point_count = 5
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_7jktm"]
 gradient = SubResource("Gradient_fc0e3")
 
-[sub_resource type="Curve" id="Curve_80nbo"]
-
 [node name="Game" type="Node2D"]
 
 [node name="Earth" type="StaticBody2D" parent="."]
@@ -42,6 +40,9 @@ texture = SubResource("GradientTexture2D_e2o6t")
 [node name="Path1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_e2o6t")
 
+[node name="Path1_Trace" type="Line2D" parent="Path1"]
+script = ExtResource("2_e2o6t")
+
 [node name="Path1_Follow" type="PathFollow2D" parent="Path1"]
 position = Vector2(120, 0)
 rotation = 1.5707964
@@ -55,8 +56,3 @@ shape = SubResource("CircleShape2D_feb5d")
 [node name="Planet1_Sprite" type="Sprite2D" parent="Path1/Path1_Follow/Planet1"]
 scale = Vector2(0.21, 0.21)
 texture = SubResource("GradientTexture2D_7jktm")
-
-[node name="Path1_Trace" type="Line2D" parent="Path1"]
-width_curve = SubResource("Curve_80nbo")
-default_color = Color(0, 0, 1, 1)
-script = ExtResource("2_e2o6t")
