@@ -15,5 +15,5 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Left"):
 		rotation -= turn_speed * delta
 	# Move Forward or back
-	velocity += transform.y * Input.get_axis("Forward","Back") * speed * delta
+	velocity += transform.x * Input.get_axis("Forward","Back") * speed * delta
 	move_and_slide()
