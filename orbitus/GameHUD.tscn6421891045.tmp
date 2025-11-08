@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://j0k5hxypteio"]
+
+[ext_resource type="Script" uid="uid://kipl75awfgvy" path="res://GameHUD.gd" id="1_6vwfb"]
+[ext_resource type="PackedScene" uid="uid://de83eoaj71mbl" path="res://WaveTimerDisplay.tscn" id="1_dcn7q"]
+[ext_resource type="PackedScene" uid="uid://dga3uyw3bhr2p" path="res://WaveNotification.tscn" id="2_6vwfb"]
+
+[node name="GameHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6vwfb")
+
+[node name="WaveTimerDisplay" parent="." instance=ExtResource("1_dcn7q")]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 29.0
+offset_right = 178.0
+offset_bottom = 106.0
+
+[node name="WaveNotification" parent="." instance=ExtResource("2_6vwfb")]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 26.0
+offset_right = 317.0
+offset_bottom = 66.0
+
+[node name="SkipWaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 62.0
+offset_right = 283.0
+offset_bottom = 101.0
+text = "Skip Wave"

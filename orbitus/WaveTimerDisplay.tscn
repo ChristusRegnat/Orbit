@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://de83eoaj71mbl"]
+
+[ext_resource type="Script" uid="uid://b7xcmwjypwa2c" path="res://WaveTimerDisplay.gd" id="1_jjkjk"]
+
+[node name="WaveTimerDisplay" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_jjkjk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "NEXT WAVE IN:"
+
+[node name="TimerLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "0:10"
+
+[node name="WaveLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Wave: 1"
