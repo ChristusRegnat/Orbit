@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dt62kbinddeci"]
+[gd_scene load_steps=14 format=3 uid="uid://mao1pu1ldjj1"]
 
-[ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://path_1_follow.gd" id="1_80nbo"]
-[ext_resource type="Script" uid="uid://c170egulbmhw6" path="res://path_1_trace.gd" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://Scripts/path_1_follow.gd" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://c170egulbmhw6" path="res://Scripts/path_1_trace.gd" id="2_e2o6t"]
 [ext_resource type="Script" uid="uid://bb1hsad2dgky7" path="res://ship.gd" id="3_feb5d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mwb40"]
@@ -72,6 +72,7 @@ scale = Vector2(0.22, 0.22)
 texture = SubResource("GradientTexture2D_eow3j")
 
 [node name="Ship" type="CharacterBody2D" parent="."]
+position = Vector2(90.96, 0)
 script = ExtResource("3_feb5d")
 acceleration = 10.0
 turn_speed = 10.0
