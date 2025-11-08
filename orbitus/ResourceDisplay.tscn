@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct3e8hk602mes"]
+
+[ext_resource type="Script" uid="uid://b32coxhfwaw3b" path="res://resourceDisplay.gd" id="1_e8nwf"]
+
+[node name="ResourceDisplay" type="PanelContainer"]
+offset_left = 49.0
+offset_top = 20.0
+offset_right = 142.0
+offset_bottom = 66.0
+script = ExtResource("1_e8nwf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Gold"
+horizontal_alignment = 3
+vertical_alignment = 1
+
+[node name="AmountLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 3
+vertical_alignment = 1
+
+[node name="DecreaseButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "-"
+
+[node name="IncreaseButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "+"
