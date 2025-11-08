@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3 uid="uid://mao1pu1ldjj1"]
+
+[ext_resource type="Texture2D" uid="uid://blljrt7sgxjyo" path="res://Assets/MenuImage.jpg" id="1_1l0tm"]
+[ext_resource type="Texture2D" uid="uid://7el2kvyr2e62" path="res://Assets/red100%.png" id="2_v158k"]
+[ext_resource type="Script" uid="uid://c170egulbmhw6" path="res://Scripts/path_1_trace.gd" id="3_h4fw4"]
+[ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://Scripts/path_1_follow.gd" id="4_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://c8r36s71ly4qw" path="res://Assets/gray100.png" id="5_o5yvi"]
+[ext_resource type="Script" uid="uid://d1gji4axx77cx" path="res://Scripts/path_2_trace.gd" id="6_rku1e"]
+[ext_resource type="Script" uid="uid://bjcaci6ap1j6h" path="res://Scripts/path_2_follow.gd" id="7_rfjv2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mwb40"]
+
+[sub_resource type="Curve2D" id="Curve2D_e2o6t"]
+_data = {
+"points": PackedVector2Array(70, 0, 0, 70, 120, 0, 70, 0, -70, 0, 0, 120, 0, 70, 0, -70, -120, 0, -70, 0, 70, 0, 0, -120, 0, -70, 0, 70, 120, 0)
+}
+point_count = 5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_feb5d"]
+
+[node name="Game" type="Node2D"]
+
+[node name="MenuImage" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.6)
+z_index = -1
+texture = ExtResource("1_1l0tm")
+
+[node name="Earth" type="StaticBody2D" parent="."]
+
+[node name="Earth_Collision" type="CollisionShape2D" parent="Earth"]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_mwb40")
+
+[node name="Earth_Sprite" type="Sprite2D" parent="Earth"]
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("2_v158k")
+
+[node name="Game_Cam" type="Camera2D" parent="."]
+
+[node name="Path1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_e2o6t")
+
+[node name="Path1_Trace" type="Line2D" parent="Path1"]
+script = ExtResource("3_h4fw4")
+
+[node name="Path1_Follow" type="PathFollow2D" parent="Path1"]
+position = Vector2(120, 0)
+rotation = 1.5707964
+script = ExtResource("4_ldgsr")
+speed = 50.0
+
+[node name="Planet1" type="Area2D" parent="Path1/Path1_Follow"]
+
+[node name="Planet1_Collisions" type="CollisionShape2D" parent="Path1/Path1_Follow/Planet1"]
+shape = SubResource("CircleShape2D_feb5d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path1/Path1_Follow/Planet1/Planet1_Collisions"]
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("5_o5yvi")
+
+[node name="Path2" type="Path2D" parent="."]
+rotation = -2.3561945
+scale = Vector2(1.5, 1.5)
+curve = SubResource("Curve2D_e2o6t")
+
+[node name="Path2_Trace" type="Line2D" parent="Path2"]
+script = ExtResource("6_rku1e")
+
+[node name="Path2_Follow" type="PathFollow2D" parent="Path2"]
+position = Vector2(120, 0)
+rotation = 1.5707964
+script = ExtResource("7_rfjv2")
+speed = 30.0
+
+[node name="Planet2" type="Area2D" parent="Path2/Path2_Follow"]
+
+[node name="Planet2_Collisions" type="CollisionShape2D" parent="Path2/Path2_Follow/Planet2"]
+shape = SubResource("CircleShape2D_feb5d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2/Path2_Follow/Planet2/Planet2_Collisions"]
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("5_o5yvi")
+
+[connection signal="area_shape_entered" from="Path1/Path1_Follow/Planet1" to="Path1/Path1_Follow/Planet1" method="_on_area_shape_entered"]
+[connection signal="body_entered" from="Path1/Path1_Follow/Planet1" to="Path1/Path1_Follow/Planet1" method="_on_body_entered"]
+[connection signal="area_shape_entered" from="Path2/Path2_Follow/Planet2" to="Path2/Path2_Follow/Planet2" method="_on_area_shape_entered"]
+[connection signal="body_entered" from="Path2/Path2_Follow/Planet2" to="Path2/Path2_Follow/Planet2" method="_on_body_entered"]

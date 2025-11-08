@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://bevr3g34yn6mk"]
+
+[ext_resource type="Script" uid="uid://dopejji330djo" path="res://Scripts/MainMenu.gd" id="1_lti8b"]
+[ext_resource type="Texture2D" uid="uid://bjeqafkgf7qet" path="res://Assets/Copilot_OrbitLogo.png" id="2_4hy44"]
+[ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://Scripts/path_1_follow.gd" id="3_4hy44"]
+[ext_resource type="Texture2D" uid="uid://7el2kvyr2e62" path="res://Assets/red100%.png" id="3_ecwwl"]
+[ext_resource type="Texture2D" uid="uid://blljrt7sgxjyo" path="res://Assets/MenuImage.jpg" id="5_ytr4m"]
+[ext_resource type="Texture2D" uid="uid://c8r36s71ly4qw" path="res://Assets/gray100.png" id="6_kk3ma"]
+
+[sub_resource type="Curve2D" id="Curve2D_ecwwl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 70, 120, 0, 70, 0, -70, 0, 0, 120, 0, 70, 0, -70, -120, 0, -70, 0, 70, 0, 0, -120, 0, -70, 0, 0, 120, 0)
+}
+point_count = 5
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_lti8b")
+
+[node name="MenuImage" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.6)
+z_index = -2
+position = Vector2(576, 324)
+texture = ExtResource("5_ytr4m")
+
+[node name="MainMenuControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuControl"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuControl/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuControl/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+alignment = 1
+
+[node name="Earth_Sprite" type="Sprite2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
+position = Vector2(37.00003, -160.99997)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("3_ecwwl")
+
+[node name="Path1" type="Path2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
+position = Vector2(37, -161)
+curve = SubResource("Curve2D_ecwwl")
+
+[node name="Path1_Follow" type="PathFollow2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer/Path1"]
+position = Vector2(120, 0)
+rotation = 1.5707964
+script = ExtResource("3_4hy44")
+
+[node name="Planet1_Sprite" type="Sprite2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer/Path1/Path1_Follow"]
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("6_kk3ma")
+
+[node name="Logo" type="Sprite2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
+position = Vector2(37, -395)
+texture = ExtResource("2_4hy44")
+
+[node name="PlayButton" type="Button" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

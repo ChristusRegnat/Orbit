@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://mao1pu1ldjj1"]
+[gd_scene load_steps=14 format=3 uid="uid://dt62kbinddeci"]
 
 [ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://path_1_follow.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://c170egulbmhw6" path="res://path_1_trace.gd" id="2_e2o6t"]
