@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://yqwqeks4t3r8"]
+
+[ext_resource type="Script" uid="uid://cu7o45ydq4ogk" path="res://purchace_ui.gd" id="1_64vjr"]
+[ext_resource type="PackedScene" uid="uid://deb6m1u10nmh8" path="res://purchase_button_container.tscn" id="2_w1fx2"]
+
+[node name="PurchaceUI" type="Node2D"]
+script = ExtResource("1_64vjr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 300.0
+offset_bottom = 90.0
+
+[node name="PurchaseButtonContainer" parent="MarginContainer" instance=ExtResource("2_w1fx2")]
+position = Vector2(130, 0)
+
+[node name="PurchaseButtonContainer2" parent="MarginContainer" instance=ExtResource("2_w1fx2")]
+position = Vector2(210, 0)

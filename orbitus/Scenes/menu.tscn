@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dopejji330djo" path="res://Scripts/MainMenu.gd" id="1_lti8b"]
 [ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://Scripts/path_1_follow.gd" id="3_4hy44"]
-[ext_resource type="Texture2D" uid="uid://7el2kvyr2e62" path="res://Assets/red100%.png" id="3_ecwwl"]
 [ext_resource type="Texture2D" uid="uid://xld3dfgu8ipp" path="res://Assets/RockLogo.png" id="3_jsrd8"]
+[ext_resource type="Texture2D" uid="uid://bc4dikcovhm3f" path="res://Assets/earth100.png" id="4_jsrd8"]
 [ext_resource type="Texture2D" uid="uid://blljrt7sgxjyo" path="res://Assets/BackgroundImage.jpg" id="5_ytr4m"]
 [ext_resource type="Texture2D" uid="uid://c8r36s71ly4qw" path="res://Assets/gray100.png" id="6_kk3ma"]
 
@@ -56,7 +56,7 @@ texture = ExtResource("3_jsrd8")
 [node name="Earth_Sprite" type="Sprite2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
 position = Vector2(37.00003, -160.99997)
 scale = Vector2(0.66, 0.66)
-texture = ExtResource("3_ecwwl")
+texture = ExtResource("4_jsrd8")
 
 [node name="Path1" type="Path2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
 position = Vector2(37, -161)
