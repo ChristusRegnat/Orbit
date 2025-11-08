@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://q8jkhtxebj4o"]
 
-[ext_resource type="Script" path="res://MainMenu.gd" id="1_lti8b"]
-[ext_resource type="Texture2D" path="res://Assets/Copilot_OrbitLogo.png" id="2_4hy44"]
-[ext_resource type="Script" path="res://path_1_trace.gd" id="2_mae5d"]
-[ext_resource type="Script" path="res://path_1_follow.gd" id="3_4hy44"]
+[ext_resource type="Script" uid="uid://dopejji330djo" path="res://Scripts/MainMenu.gd" id="1_lti8b"]
+[ext_resource type="Texture2D" uid="uid://xld3dfgu8ipp" path="res://Assets/RockLogo.png" id="2_4hy44"]
+[ext_resource type="Script" uid="uid://c170egulbmhw6" path="res://Scripts/path_1_trace.gd" id="2_mae5d"]
+[ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://Scripts/path_1_follow.gd" id="3_4hy44"]
 [ext_resource type="Texture2D" uid="uid://blljrt7sgxjyo" path="res://Assets/MenuImage.jpg" id="5_ytr4m"]
 
 [sub_resource type="Gradient" id="Gradient_80nbo"]
