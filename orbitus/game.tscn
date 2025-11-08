@@ -1,14 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://mao1pu1ldjj1"]
+[gd_scene load_steps=11 format=3 uid="uid://mao1pu1ldjj1"]
 
+[ext_resource type="Texture2D" uid="uid://7el2kvyr2e62" path="res://Assets/red100%.png" id="1_7jktm"]
 [ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://path_1_follow.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://c170egulbmhw6" path="res://path_1_trace.gd" id="2_e2o6t"]
+[ext_resource type="Texture2D" uid="uid://c8r36s71ly4qw" path="res://Assets/gray100.png" id="4_ryrav"]
+[ext_resource type="Texture2D" uid="uid://blljrt7sgxjyo" path="res://Assets/MenuImage.jpg" id="5_eow3j"]
+[ext_resource type="Script" uid="uid://d1gji4axx77cx" path="res://path_2_trace.gd" id="6_eow3j"]
+[ext_resource type="Script" uid="uid://bjcaci6ap1j6h" path="res://path_2_follow.gd" id="7_j5wjh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mwb40"]
-
-[sub_resource type="Gradient" id="Gradient_80nbo"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_e2o6t"]
-gradient = SubResource("Gradient_80nbo")
 
 [sub_resource type="Curve2D" id="Curve2D_e2o6t"]
 _data = {
@@ -18,12 +18,12 @@ point_count = 5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_feb5d"]
 
-[sub_resource type="Gradient" id="Gradient_ryrav"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_eow3j"]
-gradient = SubResource("Gradient_ryrav")
-
 [node name="Game" type="Node2D"]
+
+[node name="MenuImage" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.6)
+z_index = -1
+texture = ExtResource("5_eow3j")
 
 [node name="Earth" type="StaticBody2D" parent="."]
 
@@ -33,7 +33,7 @@ shape = SubResource("CircleShape2D_mwb40")
 
 [node name="Earth_Sprite" type="Sprite2D" parent="Earth"]
 scale = Vector2(0.66, 0.66)
-texture = SubResource("GradientTexture2D_e2o6t")
+texture = ExtResource("1_7jktm")
 
 [node name="Game_Cam" type="Camera2D" parent="."]
 
@@ -47,6 +47,7 @@ script = ExtResource("2_e2o6t")
 position = Vector2(120, 0)
 rotation = 1.5707964
 script = ExtResource("1_80nbo")
+speed = 50.0
 
 [node name="Planet1" type="Area2D" parent="Path1/Path1_Follow"]
 
@@ -55,7 +56,32 @@ shape = SubResource("CircleShape2D_feb5d")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path1/Path1_Follow/Planet1/Planet1_Collisions"]
 scale = Vector2(0.22, 0.22)
-texture = SubResource("GradientTexture2D_eow3j")
+texture = ExtResource("4_ryrav")
+
+[node name="Path2" type="Path2D" parent="."]
+rotation = -2.3561945
+scale = Vector2(1.5, 1.5)
+curve = SubResource("Curve2D_e2o6t")
+
+[node name="Path2_Trace" type="Line2D" parent="Path2"]
+script = ExtResource("6_eow3j")
+
+[node name="Path2_Follow" type="PathFollow2D" parent="Path2"]
+position = Vector2(120, 0)
+rotation = 1.5707964
+script = ExtResource("7_j5wjh")
+speed = 30.0
+
+[node name="Planet2" type="Area2D" parent="Path2/Path2_Follow"]
+
+[node name="Planet2_Collisions" type="CollisionShape2D" parent="Path2/Path2_Follow/Planet2"]
+shape = SubResource("CircleShape2D_feb5d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2/Path2_Follow/Planet2/Planet2_Collisions"]
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("4_ryrav")
 
 [connection signal="area_shape_entered" from="Path1/Path1_Follow/Planet1" to="Path1/Path1_Follow/Planet1" method="_on_area_shape_entered"]
 [connection signal="body_entered" from="Path1/Path1_Follow/Planet1" to="Path1/Path1_Follow/Planet1" method="_on_body_entered"]
+[connection signal="area_shape_entered" from="Path2/Path2_Follow/Planet2" to="Path2/Path2_Follow/Planet2" method="_on_area_shape_entered"]
+[connection signal="body_entered" from="Path2/Path2_Follow/Planet2" to="Path2/Path2_Follow/Planet2" method="_on_body_entered"]
