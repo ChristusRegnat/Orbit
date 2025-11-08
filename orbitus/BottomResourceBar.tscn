@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c76gqilx0d27k"]
 
-[ext_resource type="Script" path="res://bottomResourceBar.gd" id="1_1be0o"]
+[ext_resource type="Script" uid="uid://cfswm546lh03e" path="res://bottomResourceBar.gd" id="1_1be0o"]
 [ext_resource type="PackedScene" uid="uid://ct3e8hk602mes" path="res://ResourceDisplay.tscn" id="1_mxxt4"]
 
 [node name="BottomResourceBar" type="Control"]

@@ -2,7 +2,7 @@ extends Control
 
 # References to our resource displays
 @onready var gold_display = $PanelContainer/HBoxContainer/ResourceDisplay
-@onready var steel_display = $PanelContainer/HBoxContainer/ResourceDisplay2
+@onready var crystal_display = $PanelContainer/HBoxContainer/ResourceDisplay2
 @onready var spice_display = $PanelContainer/HBoxContainer/ResourceDisplay3  
 @onready var aether_display = $PanelContainer/HBoxContainer/ResourceDisplay4
 
@@ -16,26 +16,28 @@ signal resources_changed(resources_dict)
 func _ready():
 	# Load icons with error handling
 	var gold_icon = _load_icon("res://Assets/Resources/gold.png")
-	var steel_icon = _load_icon("res://Assets/Resources/kyber_2.png")  # Note: using kyber.png for steel
+	var crystal_icon = _load_icon("res://Assets/Resources/kyber_2.png") 
 	var spice_icon = _load_icon("res://Assets/Resources/spice_resized.png")
 	var aether_icon = _load_icon("res://Assets/Resources/aether_resized.png")
 	
 	# Debug: Print what we loaded
 	print("Loaded icons:")
 	print(" - Gold: ", gold_icon)
-	print(" - Steel: ", steel_icon)
+	print(" - Crystal: ", crystal_icon)
 	print(" - Spice: ", spice_icon)
 	print(" - Aether: ", aether_icon)
 	
 	# Set up each resource display with initial values
-	gold_display.set_resource("Gold", 10, gold_icon)
-	steel_display.set_resource("Steel", 50, steel_icon)
+	gold_display.set_resource("Gold", Globals.gold, gold_icon)
+	crystal_display.set_resource("Crystal", 50, crystal_icon)
 	spice_display.set_resource("Spice", 25, spice_icon)
 	aether_display.set_resource("Aether", 10, aether_icon)
 	
+	
+	
 	# Connect signals from each display
 	gold_display.resource_changed.connect(_on_gold_changed)
-	steel_display.resource_changed.connect(_on_steel_changed)
+	crystal_display.resource_changed.connect(_on_crystal_changed)
 	spice_display.resource_changed.connect(_on_spice_changed)
 	aether_display.resource_changed.connect(_on_aether_changed)
 	
@@ -55,7 +57,7 @@ func _load_icon(path: String) -> Texture2D:
 func _on_gold_changed(new_amount: int):
 	_on_resource_changed("gold", new_amount)
 
-func _on_steel_changed(new_amount: int):
+func _on_crystal_changed(new_amount: int):
 	_on_resource_changed("steel", new_amount)
 
 func _on_spice_changed(new_amount: int):
@@ -78,7 +80,7 @@ func update_resources_dict():
 	# Initialize the dictionary with current values
 	resources = {
 		"gold": gold_display.get_amount(),
-		"steel": steel_display.get_amount(), 
+		"steel": crystal_display.get_amount(), 
 		"spice": spice_display.get_amount(),
 		"aether": aether_display.get_amount()
 	}
@@ -128,8 +130,8 @@ func _get_display_for_resource(resource_name: String):
 	match resource_name.to_lower():
 		"gold":
 			return gold_display
-		"steel":
-			return steel_display
+		"crystal":
+			return crystal_display
 		"spice":
 			return spice_display
 		"aether":
