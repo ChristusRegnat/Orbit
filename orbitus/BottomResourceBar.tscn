@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://c76gqilx0d27k"]
+
+[ext_resource type="Script" uid="uid://cfswm546lh03e" path="res://bottomResourceBar.gd" id="1_1be0o"]
+[ext_resource type="PackedScene" uid="uid://ct3e8hk602mes" path="res://ResourceDisplay.tscn" id="1_mxxt4"]
+
+[node name="BottomResourceBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.2826087, 1)
+script = ExtResource("1_1be0o")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.9810566, 1.1797802)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="ResourceDisplay" parent="PanelContainer/HBoxContainer" instance=ExtResource("1_mxxt4")]
+layout_mode = 2
+
+[node name="ResourceDisplay2" parent="PanelContainer/HBoxContainer" instance=ExtResource("1_mxxt4")]
+layout_mode = 2
+
+[node name="ResourceDisplay3" parent="PanelContainer/HBoxContainer" instance=ExtResource("1_mxxt4")]
+layout_mode = 2
+
+[node name="ResourceDisplay4" parent="PanelContainer/HBoxContainer" instance=ExtResource("1_mxxt4")]
+layout_mode = 2
