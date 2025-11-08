@@ -12,16 +12,16 @@ gradient = SubResource("Gradient_80nbo")
 
 [sub_resource type="Curve2D" id="Curve2D_e2o6t"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 70, 120, 0, 70, 0, -70, 0, 0, 120, 0, 70, 0, -70, -120, 0, -70, 0, 70, 0, 0, -120, 0, -70, 0, 0, 120, 0)
+"points": PackedVector2Array(70, 0, 0, 70, 120, 0, 70, 0, -70, 0, 0, 120, 0, 70, 0, -70, -120, 0, -70, 0, 70, 0, 0, -120, 0, -70, 0, 70, 120, 0)
 }
 point_count = 5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_feb5d"]
 
-[sub_resource type="Gradient" id="Gradient_fc0e3"]
+[sub_resource type="Gradient" id="Gradient_ryrav"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7jktm"]
-gradient = SubResource("Gradient_fc0e3")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eow3j"]
+gradient = SubResource("Gradient_ryrav")
 
 [node name="Game" type="Node2D"]
 
@@ -48,11 +48,14 @@ position = Vector2(120, 0)
 rotation = 1.5707964
 script = ExtResource("1_80nbo")
 
-[node name="Planet1" type="StaticBody2D" parent="Path1/Path1_Follow"]
+[node name="Planet1" type="Area2D" parent="Path1/Path1_Follow"]
 
 [node name="Planet1_Collisions" type="CollisionShape2D" parent="Path1/Path1_Follow/Planet1"]
 shape = SubResource("CircleShape2D_feb5d")
 
-[node name="Planet1_Sprite" type="Sprite2D" parent="Path1/Path1_Follow/Planet1"]
-scale = Vector2(0.21, 0.21)
-texture = SubResource("GradientTexture2D_7jktm")
+[node name="Sprite2D" type="Sprite2D" parent="Path1/Path1_Follow/Planet1/Planet1_Collisions"]
+scale = Vector2(0.22, 0.22)
+texture = SubResource("GradientTexture2D_eow3j")
+
+[connection signal="area_shape_entered" from="Path1/Path1_Follow/Planet1" to="Path1/Path1_Follow/Planet1" method="_on_area_shape_entered"]
+[connection signal="body_entered" from="Path1/Path1_Follow/Planet1" to="Path1/Path1_Follow/Planet1" method="_on_body_entered"]
