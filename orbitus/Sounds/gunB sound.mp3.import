@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://v2f6x8kwa7se"
+path="res://.godot/imported/gunB sound.mp3-e73afa9b9566c393a39cabd057a81ff5.mp3str"
+
+[deps]
+
+source_file="res://Sounds/gunB sound.mp3"
+dest_files=["res://.godot/imported/gunB sound.mp3-e73afa9b9566c393a39cabd057a81ff5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
