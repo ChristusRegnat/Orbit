@@ -73,6 +73,7 @@ texture = SubResource("GradientTexture2D_eow3j")
 
 [node name="Ship" type="CharacterBody2D" parent="."]
 script = ExtResource("3_feb5d")
+acceleration = 10.0
 turn_speed = 10.0
 
 [node name="Ship_Collision" type="CollisionShape2D" parent="Ship"]
