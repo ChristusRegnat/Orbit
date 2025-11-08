@@ -56,24 +56,3 @@ shape = SubResource("CircleShape2D_feb5d")
 [node name="Planet1_Sprite" type="Sprite2D" parent="Path1/Path1_Follow/Planet1"]
 scale = Vector2(0.21, 0.21)
 texture = SubResource("GradientTexture2D_7jktm")
-
-[node name="Path2" type="Path2D" parent="."]
-scale = Vector2(1.42, 1.42)
-curve = SubResource("Curve2D_e2o6t")
-
-[node name="Path2_Trace" type="Line2D" parent="Path2"]
-script = ExtResource("2_e2o6t")
-
-[node name="Path2_Follow" type="PathFollow2D" parent="Path2"]
-position = Vector2(0, -120.000015)
-progress = 570.474
-script = ExtResource("1_80nbo")
-
-[node name="Planet2" type="StaticBody2D" parent="Path2/Path2_Follow"]
-
-[node name="Planet2_Collisions" type="CollisionShape2D" parent="Path2/Path2_Follow/Planet2"]
-shape = SubResource("CircleShape2D_feb5d")
-
-[node name="Planet2_Sprite" type="Sprite2D" parent="Path2/Path2_Follow/Planet2"]
-scale = Vector2(0.21, 0.21)
-texture = SubResource("GradientTexture2D_7jktm")
