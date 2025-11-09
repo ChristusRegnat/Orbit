@@ -7,6 +7,10 @@ extends Control
 @onready var spice_display = $PanelContainer/HBoxContainer/ResourceDisplay3  
 @onready var aether_display = $PanelContainer/HBoxContainer/ResourceDisplay4
 
+# 1. Preload the sound resources (UPDATE THESE PATHS)
+
+
+
 func _ready():
 	print("=== BottomResourceBar._ready() started ===")
 	
