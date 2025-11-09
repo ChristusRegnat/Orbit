@@ -17,8 +17,9 @@ func _ready():
 	# Summon HUD
 	var GameHUD = Game_HUD.instantiate()
 	GameHUD.position = Vector2(-630,210)
-	
 	add_child(GameHUD)
+	WaveManager.current_wave = 1
+	
 	
 func enemy_spawns():
 		# Generate rand_x
