@@ -1,8 +1,8 @@
 extends Area2D
 
-@export var fire_rate: float = 1.0  # Shots per second
-@export var range_distance: float = 500.0
-@export var damage: int = 1
+@export var fire_rate: float = 5.0  # Shots per second
+@export var range_distance: float = 2000.0
+@export var damage: int = 3
 @export var debug_mode: bool = true  # Turn on to see debug messages
 
 @onready var ray_cast: RayCast2D = $RayCast2D
@@ -18,7 +18,7 @@ func _ready() -> void:
 	
 	# Set up fire rate timer
 	if fire_timer:
-		fire_timer.wait_time = 1.0 / fire_rate
+		fire_timer.wait_time = 1
 		fire_timer.timeout.connect(_on_fire_timer_timeout)
 		fire_timer.start()
 	else:
@@ -110,7 +110,7 @@ func shoot():
 			print("No target to shoot at!")
 		return
 	
-	
+	can_fire = false
 	
 	if fire_timer:
 		fire_timer.start()

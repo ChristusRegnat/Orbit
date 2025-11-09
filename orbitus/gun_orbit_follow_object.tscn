@@ -1,36 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkls0pnfqksoh"]
+[gd_scene load_steps=5 format=3 uid="uid://bj3lq2u8nysjh"]
 
 [ext_resource type="Script" uid="uid://nxdbrk3l46e6" path="res://Scenes/gun_orbit_follow.gd" id="1_hmt0f"]
-[ext_resource type="Script" uid="uid://ds2ryl85xqb6g" path="res://Scenes/gun_1.gd" id="2_s4ito"]
+[ext_resource type="Script" uid="uid://b6h1ho572phlv" path="res://Scripts/auto_targeting_gun.gd" id="2_hmt0f"]
 [ext_resource type="Texture2D" uid="uid://dbmtluo3kkef8" path="res://Assets/gunC_still.png" id="3_duqn7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vgmmo"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_s4ito"]
+radius = 91.08787
 
 [node name="GunOrbit_FollowObject" type="PathFollow2D"]
 position = Vector2(120, 0)
 rotation = 1.5707964
 script = ExtResource("1_hmt0f")
 
-[node name="Gun1" type="Area2D" parent="."]
-script = ExtResource("2_s4ito")
+[node name="Turret" type="Node2D" parent="."]
+position = Vector2(151, 120)
+scale = Vector2(0.2, 0.2)
 
-[node name="Gun1_Collisions" type="CollisionShape2D" parent="Gun1"]
-shape = SubResource("CircleShape2D_vgmmo")
+[node name="Gun1" type="Area2D" parent="Turret"]
+script = ExtResource("2_hmt0f")
 
-[node name="Sprite2D" type="Sprite2D" parent="Gun1/Gun1_Collisions"]
-scale = Vector2(0.22, 0.22)
-texture = ExtResource("3_duqn7")
-
-[node name="Gun1Raycast" type="RayCast2D" parent="Gun1"]
-target_position = Vector2(0, -1000)
+[node name="RayCast2D" type="RayCast2D" parent="Turret/Gun1"]
+collision_mask = 3
+hit_from_inside = true
 collide_with_areas = true
 
-[node name="Gun1BulletTrace" type="Line2D" parent="Gun1/Gun1Raycast"]
-width = 5.0
+[node name="Line2D" type="Line2D" parent="Turret/Gun1/RayCast2D"]
+points = PackedVector2Array(140, -79, 250, -78, 250, -78, 279, -78)
+width = 3.0
 default_color = Color(0.4392157, 0.23137255, 0.65882355, 0.6666667)
 
-[node name="Gun1TracerTimer" type="Timer" parent="Gun1"]
+[node name="FireTimer" type="Timer" parent="Turret/Gun1"]
+wait_time = 0.053
+one_shot = true
 
-[connection signal="area_shape_entered" from="Gun1" to="Gun1" method="_on_area_shape_entered"]
-[connection signal="body_entered" from="Gun1" to="Gun1" method="_on_body_entered"]
-[connection signal="timeout" from="Gun1/Gun1TracerTimer" to="Gun1" method="_on_gun_1_tracer_timer_timeout"]
+[node name="TracerTimer" type="Timer" parent="Turret/Gun1"]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Turret/Gun1"]
+position = Vector2(-7, 30)
+shape = SubResource("CircleShape2D_s4ito")
+
+[node name="Sprite2D" type="Sprite2D" parent="Turret/Gun1"]
+texture = ExtResource("3_duqn7")
+offset = Vector2(0.2, 0.2)
+
+[connection signal="timeout" from="Turret/Gun1/FireTimer" to="Turret/Gun1" method="_on_fire_timer_timeout"]
+[connection signal="timeout" from="Turret/Gun1/TracerTimer" to="Turret/Gun1" method="_on_tracer_timer_timeout"]

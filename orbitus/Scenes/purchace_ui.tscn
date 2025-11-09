@@ -22,5 +22,9 @@ texture_normal = ExtResource("2_w1fx2")
 layout_mode = 2
 texture_normal = ExtResource("3_ksfhu")
 
+[node name="buy_turret_button2" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_ksfhu")
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/buy_ship_button" to="." method="_on_buy_ship_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/buy_turret_button" to="." method="_on_buy_turret_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://crdqrcp6l8l6j"]
+[gd_scene load_steps=5 format=3 uid="uid://bhnxh14ag160m"]
 
 [ext_resource type="Script" uid="uid://cv8c88tk5u60n" path="res://Scenes/turret_test.gd" id="1_8nstx"]
 [ext_resource type="Script" uid="uid://b6h1ho572phlv" path="res://Scripts/auto_targeting_gun.gd" id="2_858py"]
@@ -18,6 +18,8 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("2_858py")
 
 [node name="RayCast2D" type="RayCast2D" parent="Turret/Gun1"]
+collision_mask = 3
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="Line2D" type="Line2D" parent="Turret/Gun1/RayCast2D"]

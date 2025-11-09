@@ -19,7 +19,7 @@
 [ext_resource type="Script" path="res://gun_orbit.gd" id="12_nnt18"]
 [ext_resource type="Script" uid="uid://6y6knkbej7tx" path="res://Scenes/Planets/Spice_Elevator.gd" id="13_mg4q0"]
 [ext_resource type="Script" uid="uid://d3os1bsoh5egx" path="res://Scenes/Planets/Aether_Elevator.gd" id="15_vm72l"]
-[ext_resource type="PackedScene" path="res://gun_orbit_follow_object.tscn" id="17_ewbju"]
+[ext_resource type="PackedScene" uid="uid://bj3lq2u8nysjh" path="res://gun_orbit_follow_object.tscn" id="17_ewbju"]
 [ext_resource type="PackedScene" uid="uid://yqwqeks4t3r8" path="res://Scenes/purchace_ui.tscn" id="18_85qyi"]
 [ext_resource type="PackedScene" uid="uid://2pm5h0masax0" path="res://Player/Ship.tscn" id="18_iivbl"]
 
@@ -97,7 +97,6 @@ script = ExtResource("1_iivbl")
 [node name="Earth" type="Area2D" parent="."]
 collision_mask = 3
 script = ExtResource("1_o5yvi")
-HP = 10
 
 [node name="Earth_Collision" type="CollisionShape2D" parent="Earth"]
 scale = Vector2(3.315, 3.315)

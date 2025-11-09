@@ -20,6 +20,4 @@ func increment_turret_count() -> void:
 func increment_ship_count() -> void:
 	ShipCount += 1
 	
-func increment_HP(x) -> void:
-	HP += x
 	
