@@ -12,13 +12,17 @@ var TurretCount: int = 3
 var ShipCount: int = 3
 var HP: int = 15
 
+
+
 func increment_turret_count() -> void:
 	TurretCount += 1
 	var _turret_count: int = TurretCount
+	HP += 2
 	turret_count_changed.emit(_turret_count)
 
 func increment_ship_count() -> void:
 	ShipCount += 1
 	var _ship_count: int = ShipCount
+	HP += 1
 	ship_count_changed.emit(_ship_count)
 	

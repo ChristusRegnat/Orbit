@@ -63,6 +63,16 @@ func Summon_Wave():
 			spawn_enemy()
 			counter += 1
 			
+			
+var spawn_timer := 0.0
+var spawn_interval := 1.0
+
 func _process(delta: float) -> void:
 	if WaveManager.wave_started:
+		spawn_timer += delta
+		if spawn_timer >= spawn_interval:
+			spawn_timer = 0.0
+			spawn_enemy()
+
 		Summon_Wave()
+		
