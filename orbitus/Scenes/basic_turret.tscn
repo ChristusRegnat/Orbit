@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbcsv3w176twg"]
+
+[ext_resource type="Texture2D" uid="uid://dbmtluo3kkef8" path="res://Assets/gunC_still.png" id="2_gun_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gun"]
+
+[node name="BasicTurret" type="Area2D"]
+
+[node name="Gun1Raycast" type="RayCast2D" parent="."]
+target_position = Vector2(0, -500)
+
+[node name="Gun1BulletTrace" type="Line2D" parent="Gun1Raycast"]
+width = 3.0
+default_color = Color(1, 0.5, 0, 1)
+
+[node name="Gun1TracerTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FireTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gun")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_gun_tex")
+
+[connection signal="timeout" from="Gun1TracerTimer" to="." method="_on_gun_1_tracer_timer_timeout"]
