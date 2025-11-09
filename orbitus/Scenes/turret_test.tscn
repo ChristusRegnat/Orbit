@@ -39,13 +39,5 @@ shape = SubResource("CircleShape2D_168a2")
 texture = ExtResource("4_gun_tex")
 offset = Vector2(0.2, 0.2)
 
-[node name="EnemySpawner" type="Node2D" parent="."]
-visible = false
-position = Vector2(602, 160)
-
-[node name="SpawnTimer" type="Timer" parent="EnemySpawner"]
-wait_time = 3.057
-autostart = true
-
 [connection signal="timeout" from="Turret/Gun1/FireTimer" to="Turret/Gun1" method="_on_fire_timer_timeout"]
 [connection signal="timeout" from="Turret/Gun1/TracerTimer" to="Turret/Gun1" method="_on_tracer_timer_timeout"]
