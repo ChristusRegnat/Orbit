@@ -13,7 +13,7 @@ var timer: Timer
 var is_wave_active: bool = false
 
 # Wave progression - each wave gets shorter preparation time until boss
-var wave_times = [20.0, 25, 30, 35, 40, 50, 4.0, 3.0, 2.0, 1.0]
+var wave_times = [20.0, 25, 25, 30, 40, 50, 40, 30, 2.0, 1.0]
 var boss_wave_number: int = 10
 
 func _ready():
@@ -95,12 +95,6 @@ func get_current_wave() -> int:
 
 func is_wave_in_progress() -> bool:
 	return is_wave_active
-
-# For debugging - skip to next wave
-func skip_to_next_wave():
-	if timer:
-		timer.stop()
-		start_wave()
 
 # win screen go brrrrrrr
 func win_screen():

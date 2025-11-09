@@ -6,7 +6,6 @@ const WaveManager = preload("res://WaveManager.gd")
 # References to our wave system components
 @onready var wave_timer_display = $WaveTimerDisplay
 @onready var wave_notification = $WaveNotification
-@onready var skip_wave_button = $SkipWaveButton
 
 # Reference to the WaveManager (we'll create this in _ready)
 var wave_manager: Node
@@ -25,9 +24,6 @@ func _ready():
 		wave_manager.boss_wave_started.connect(_on_boss_wave_started)
 	if wave_manager.has_signal("wave_ended"):
 		wave_manager.wave_ended.connect(_on_wave_ended)
-	
-	# Connect the skip button
-	skip_wave_button.pressed.connect(_on_skip_wave_pressed)
 	
 	# Initial display update
 	update_display()
@@ -58,10 +54,6 @@ func _on_boss_wave_started():
 func _on_wave_ended(wave_number: int):
 	print("Wave %d cleanup" % wave_number)
 	# Clean up enemies, award resources, etc.
-
-func _on_skip_wave_pressed():
-	if wave_manager:
-		wave_manager.skip_to_next_wave()
 
 func update_display():
 	# Update display with current state

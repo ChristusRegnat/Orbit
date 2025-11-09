@@ -31,6 +31,13 @@ layout_mode = 2
 texture_normal = ExtResource("4_svwad")
 stretch_mode = 4
 
+[node name="Line2D" type="Line2D" parent="MarginContainer/HBoxContainer/buy_HP_button"]
+z_index = 1
+points = PackedVector2Array(0, 0, 80, 0, 80, 80, 0, 80)
+closed = true
+width = 2.0
+default_color = Color(0, 0.29803923, 0.43137255, 0.8784314)
+
 [node name="Spice" type="Sprite2D" parent="MarginContainer/HBoxContainer"]
 position = Vector2(224.00002, 59.98)
 scale = Vector2(0.34615403, 0.34615403)

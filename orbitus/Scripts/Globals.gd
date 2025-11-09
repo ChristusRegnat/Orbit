@@ -8,9 +8,9 @@ signal ship_count_changed(new_value: int)
 
 # Declare Global Variables
 static var WinCondition: bool = true
-var TurretCount: int = 3
+var TurretCount: int = 1
 var ShipCount: int = 3
-var HP: int = 15
+var HP: int = 10
 
 
 

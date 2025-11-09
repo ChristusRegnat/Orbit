@@ -8,7 +8,11 @@ var rand_y = 0
 
 func _ready():
 	Global.ShipCount = 3
-	Global.TurretCount = 3
+	Global.TurretCount = 1
+	GlobalResource.set_resource("gold", 1)
+	GlobalResource.set_resource("spice", 2)
+	GlobalResource.set_resource("aether", 2)
+	GlobalResource.set_resource("crystal", 2)
 	randomize()
 	# Summon Bottom Resource Bar
 	var resource_bar = Bottom_Resource_Bar.instantiate()
@@ -62,8 +66,23 @@ func Summon_Wave():
 		while counter != 155:
 			spawn_enemy()
 			counter += 1
+	elif WaveManager.get_current_wave() == 6:
+		#OS.delay_msec(10000)
+		while counter != 255:
+			spawn_enemy()
+			counter += 1
+	elif WaveManager.get_current_wave() == 7:
+		#OS.delay_msec(10000)
+		while counter != 400:
+			spawn_enemy()
+			counter += 1						
+	elif WaveManager.get_current_wave() == 8:
+		#OS.delay_msec(10000)
+		while counter != 500:
+			spawn_enemy()
+			counter += 1
 			
-			
+						
 var spawn_timer := 0.0
 var spawn_interval := 1.0
 
