@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var fire_rate: float = 5.0  # Shots per second
-@export var range_distance: float = 1000.0
+@export var fire_rate: float = 1.0  # Shots per second
+@export var range_distance: float = 500.0
 @export var damage: int = 1
 @export var debug_mode: bool = true  # Turn on to see debug messages
 
@@ -110,7 +110,7 @@ func shoot():
 			print("No target to shoot at!")
 		return
 	
-	can_fire = false
+	
 	
 	if fire_timer:
 		fire_timer.start()
