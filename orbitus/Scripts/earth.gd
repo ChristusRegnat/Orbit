@@ -13,6 +13,7 @@ func _ready():
 	animated_sprite.play("100")
 	is_dead = false
 	Global.HP = 15
+	Global.TurretCount = 3
 # === HELPER FUNCTION: Defines the sound playing logic ===
 func _play_death_sound():
 	# Create a temporary AudioStreamPlayer

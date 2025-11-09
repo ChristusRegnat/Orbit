@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< Updated upstream
-uid="uid://bmpfga54655xj"
-=======
-uid="uid://dn00bwloavrbm"
->>>>>>> Stashed changes
-path="res://.godot/imported/Heart.png-7e43d5c1e840298bd2c202716ad21322.ctex"
+uid="uid://crsyjwxt78rf7"
+path="res://.godot/imported/one.png-ec4b9644aff9caf1d7192fefe8401ae8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Heart.png"
-dest_files=["res://.godot/imported/Heart.png-7e43d5c1e840298bd2c202716ad21322.ctex"]
+source_file="res://Assets/one.png"
+dest_files=["res://.godot/imported/one.png-ec4b9644aff9caf1d7192fefe8401ae8.ctex"]
 
 [params]
 

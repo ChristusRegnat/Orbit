@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed : float = 100
+@export var speed : float = 50
 @export var health : int = 3
 var collided : bool = false
 var being_targeted: bool = false  # Track if the enemy is being targeted by a turret

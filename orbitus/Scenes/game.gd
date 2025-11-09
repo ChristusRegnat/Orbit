@@ -8,6 +8,7 @@ var rand_y = 0
 
 func _ready():
 	Global.ShipCount = 3
+	Global.TurretCount = 3
 	randomize()
 	# Summon Bottom Resource Bar
 	var resource_bar = Bottom_Resource_Bar.instantiate()
