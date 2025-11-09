@@ -10,6 +10,7 @@ func die():
 	animated_sprite.play("explosion")
 	await animated_sprite.animation_finished
 	print("played")
+	WaveManager.current_wave = 1
 	get_tree().change_scene_to_file("res://Scenes/end_game_screen.tscn")
 		
 func _on_body_entered(_body: Node2D) -> void:

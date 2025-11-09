@@ -30,17 +30,29 @@ func enemy_spawns():
 		rand_y = randi_range(y_range[index][0],y_range[index][1])
 	
 func spawn_enemy():
-	while counter != 6:
-		var enemy = Enemy_Ship_Scene.instantiate()
-		enemy_spawns()
-		enemy.position = Vector2(rand_x,rand_y)
-		add_child(enemy)
-		counter += 1
-	if counter == 6:
-		counter = 0
+	var enemy = Enemy_Ship_Scene.instantiate()
+	enemy_spawns()
+	enemy.position = Vector2(rand_x,rand_y)
+	add_child(enemy)
 	
-	
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("enter"):
-		spawn_enemy()
-	
+func Summon_Wave():
+	if WaveManager.get_current_wave() == 2:
+		while counter != 15:
+			spawn_enemy()
+			counter += 1
+	elif WaveManager.get_current_wave() == 3:
+		while counter != 35:
+			spawn_enemy()
+			counter += 1
+	elif WaveManager.get_current_wave() == 4:
+		while counter != 65:
+			spawn_enemy()
+			counter += 1
+	elif WaveManager.get_current_wave() == 5:
+		while counter != 165:
+			spawn_enemy()
+			counter += 1
+			
+func _process(delta: float) -> void:
+	if WaveManager.wave_started:
+		Summon_Wave()
