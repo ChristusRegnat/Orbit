@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://mao1pu1ldjj1"]
+[gd_scene load_steps=30 format=3 uid="uid://mao1pu1ldjj1"]
 
 [ext_resource type="Texture2D" uid="uid://blljrt7sgxjyo" path="res://Assets/BackgroundImage.jpg" id="1_1l0tm"]
 [ext_resource type="Script" uid="uid://blksffinkgr3t" path="res://Scenes/game.gd" id="1_iivbl"]
@@ -7,10 +7,10 @@
 [ext_resource type="Script" uid="uid://c170egulbmhw6" path="res://Scripts/path_1_trace.gd" id="3_h4fw4"]
 [ext_resource type="Texture2D" uid="uid://5brfljilqgfl" path="res://Assets/redboom.png" id="3_rfjv2"]
 [ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://Scripts/path_1_follow.gd" id="4_ldgsr"]
-[ext_resource type="Script" path="res://Scenes/ship_counter.gd" id="5_7t8sx"]
+[ext_resource type="Script" uid="uid://dncle6nwu4wif" path="res://Scenes/ship_counter.gd" id="5_7t8sx"]
 [ext_resource type="Texture2D" uid="uid://c8r36s71ly4qw" path="res://Assets/gray100.png" id="5_o5yvi"]
 [ext_resource type="Script" uid="uid://4c3ul4w67lqx" path="res://Scenes/planet_1.gd" id="8_7nbq1"]
-[ext_resource type="Script" uid="uid://r5172uk0xdig" path="res://Scenes/gun_orbit_trace.gd" id="8_h4fw4"]
+[ext_resource type="Script" path="res://Scenes/gun_orbit_trace.gd" id="8_h4fw4"]
 [ext_resource type="Script" uid="uid://c804y26frd855" path="res://Scenes/Planets/Crystal_Elevator.gd" id="10_exi56"]
 [ext_resource type="Texture2D" uid="uid://b6jhehxuwqq4j" path="res://Assets/gold100.png" id="10_iivbl"]
 [ext_resource type="Texture2D" uid="uid://7el2kvyr2e62" path="res://Assets/red100%.png" id="11_7nbq1"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bj3lq2u8nysjh" path="res://gun_orbit_follow_object.tscn" id="17_ewbju"]
 [ext_resource type="PackedScene" uid="uid://yqwqeks4t3r8" path="res://Scenes/purchace_ui.tscn" id="18_85qyi"]
 [ext_resource type="PackedScene" uid="uid://2pm5h0masax0" path="res://Player/Ship.tscn" id="18_iivbl"]
+[ext_resource type="Script" uid="uid://cp04gdwatuda7" path="res://Scenes/label.gd" id="23_mg4q0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mwb40"]
 
@@ -321,10 +322,12 @@ texture = ExtResource("1_1l0tm")
 [node name="Game_Cam" type="Camera2D" parent="."]
 
 [node name="Label" type="Label" parent="."]
-offset_left = 78.0
-offset_top = -124.0
-offset_right = 119.0
-offset_bottom = -88.0
+offset_left = 456.0
+offset_top = -321.0
+offset_right = 574.0
+offset_bottom = -235.0
+theme_override_font_sizes/font_size = 30
+script = ExtResource("23_mg4q0")
 
 [connection signal="area_entered" from="Earth" to="Earth" method="_on_area_entered"]
 [connection signal="body_entered" from="Earth" to="Earth" method="_on_body_entered"]
