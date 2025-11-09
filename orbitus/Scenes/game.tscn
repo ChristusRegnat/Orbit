@@ -82,7 +82,7 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_mg4q0"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 120, 65.464134, 61.988155, -65.464134, -61.988155, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 120, 0, 0, -52.560905, -18.801838, 0, 0)
 }
 point_count = 2
 
@@ -91,6 +91,7 @@ script = ExtResource("1_iivbl")
 
 [node name="Earth" type="Area2D" parent="."]
 script = ExtResource("1_o5yvi")
+HP = 10
 
 [node name="Earth_Collision" type="CollisionShape2D" parent="Earth"]
 scale = Vector2(3, 3)
@@ -135,11 +136,12 @@ texture = ExtResource("5_o5yvi")
 [node name="Elevator" type="Path2D" parent="Path1/Path1_Follow/Planet1" node_paths=PackedStringArray("target_object")]
 curve = SubResource("Curve2D_mg4q0")
 script = ExtResource("10_exi56")
-target_object = NodePath("..")
+target_object = NodePath("../Planet1_Collisions")
 
 [node name="Elevator_Follow" type="PathFollow2D" parent="Path1/Path1_Follow/Planet1/Elevator"]
 position = Vector2(0, 120)
 rotation = -0.72511715
+rotates = false
 loop = false
 script = ExtResource("11_exi56")
 speed = 1.0
