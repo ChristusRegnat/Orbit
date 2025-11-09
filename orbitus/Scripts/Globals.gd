@@ -19,5 +19,6 @@ func increment_turret_count() -> void:
 
 func increment_ship_count() -> void:
 	ShipCount += 1
-	
+	var _ship_count: int = ShipCount
+	ship_count_changed.emit(_ship_count)
 	

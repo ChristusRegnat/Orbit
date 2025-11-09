@@ -37,20 +37,27 @@ func spawn_enemy():
 	enemy.position = Vector2(rand_x,rand_y)
 	add_child(enemy)
 	
+	
+	
+	
 func Summon_Wave():
 	if WaveManager.get_current_wave() == 2:
+		#OS.delay_msec(5000)
 		while counter != 5:
 			spawn_enemy()
 			counter += 1
 	elif WaveManager.get_current_wave() == 3:
+		#OS.delay_msec(6000)
 		while counter != 25:
 			spawn_enemy()
 			counter += 1
 	elif WaveManager.get_current_wave() == 4:
+		#OS.delay_msec(8000)
 		while counter != 55:
 			spawn_enemy()
 			counter += 1
 	elif WaveManager.get_current_wave() == 5:
+		#OS.delay_msec(10000)
 		while counter != 155:
 			spawn_enemy()
 			counter += 1

@@ -13,7 +13,7 @@ var timer: Timer
 var is_wave_active: bool = false
 
 # Wave progression - each wave gets shorter preparation time until boss
-var wave_times = [10.0, 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0]
+var wave_times = [20.0, 19.0, 18.0, 17.0, 16.0, 15.0, 4.0, 3.0, 2.0, 1.0]
 var boss_wave_number: int = 10
 
 func _ready():

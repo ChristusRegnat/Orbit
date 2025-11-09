@@ -7,10 +7,10 @@
 [ext_resource type="Script" uid="uid://c170egulbmhw6" path="res://Scripts/path_1_trace.gd" id="3_h4fw4"]
 [ext_resource type="Texture2D" uid="uid://5brfljilqgfl" path="res://Assets/redboom.png" id="3_rfjv2"]
 [ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://Scripts/path_1_follow.gd" id="4_ldgsr"]
-[ext_resource type="Script" uid="uid://dncle6nwu4wif" path="res://Scenes/ship_counter.gd" id="5_7t8sx"]
+[ext_resource type="Script" path="res://Scenes/ship_counter.gd" id="5_7t8sx"]
 [ext_resource type="Texture2D" uid="uid://c8r36s71ly4qw" path="res://Assets/gray100.png" id="5_o5yvi"]
 [ext_resource type="Script" uid="uid://4c3ul4w67lqx" path="res://Scenes/planet_1.gd" id="8_7nbq1"]
-[ext_resource type="Script" path="res://Scenes/gun_orbit_trace.gd" id="8_h4fw4"]
+[ext_resource type="Script" uid="uid://r5172uk0xdig" path="res://Scenes/gun_orbit_trace.gd" id="8_h4fw4"]
 [ext_resource type="Script" uid="uid://c804y26frd855" path="res://Scenes/Planets/Crystal_Elevator.gd" id="10_exi56"]
 [ext_resource type="Texture2D" uid="uid://b6jhehxuwqq4j" path="res://Assets/gold100.png" id="10_iivbl"]
 [ext_resource type="Texture2D" uid="uid://7el2kvyr2e62" path="res://Assets/red100%.png" id="11_7nbq1"]
@@ -297,6 +297,9 @@ target_object = NodePath("../Planet1_Collisions")
 [node name="Planet1_Collisions" type="CollisionShape2D" parent="Path4/Path1_Follow/Planet1/StaticBody2D"]
 shape = SubResource("CircleShape2D_feb5d")
 
+[node name="Ship" parent="." instance=ExtResource("18_iivbl")]
+position = Vector2(194.70184, 140.08112)
+
 [node name="GunOrbit" type="Path2D" parent="."]
 scale = Vector2(0.5, 0.5)
 curve = SubResource("Curve2D_e2o6t")
@@ -306,8 +309,6 @@ script = ExtResource("12_nnt18")
 script = ExtResource("8_h4fw4")
 
 [node name="GunOrbit_FollowObject" parent="GunOrbit" instance=ExtResource("17_ewbju")]
-
-[node name="Ship" parent="." instance=ExtResource("18_iivbl")]
 
 [node name="PurchaceUI" parent="." instance=ExtResource("18_85qyi")]
 position = Vector2(350, 244)

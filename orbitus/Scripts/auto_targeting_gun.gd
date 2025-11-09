@@ -18,7 +18,7 @@ func _ready() -> void:
 	
 	# Set up fire rate timer
 	if fire_timer:
-		fire_timer.wait_time = 1
+		fire_timer.wait_time = 1 / fire_rate  # Adjust fire rate dynamically based on fire_rate variable
 		fire_timer.timeout.connect(_on_fire_timer_timeout)
 		fire_timer.start()
 	else:
@@ -55,28 +55,27 @@ func _process(_delta: float) -> void:
 				var distance = global_position.distance_to(current_target.global_position)
 				print("Target out of range: ", distance, " > ", range_distance)
 
+
+
 func find_target():
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	
 	if debug_mode:
 		print("Looking for enemies. Found: ", enemies.size())
 	
-	var closest_enemy = null
-	var closest_distance = range_distance
+	# Filter out enemies that are already targeted
+	var available_enemies = []
 	
 	for enemy in enemies:
-		if is_instance_valid(enemy):
-			var distance = global_position.distance_to(enemy.global_position)
-			if debug_mode:
-				print("Enemy found at distance: ", distance)
-			if distance < closest_distance:
-				closest_distance = distance
-				closest_enemy = enemy
+		if is_instance_valid(enemy) and not enemy.is_being_targeted():
+			available_enemies.append(enemy)
 	
-	current_target = closest_enemy
+	if available_enemies.size() > 0:
+		# Select a random enemy from the available ones
+		current_target = available_enemies[randi() % available_enemies.size()]
 	
 	if debug_mode and current_target:
-		print("Target acquired: ", current_target.name, " at distance: ", closest_distance)
+		print("Target acquired: ", current_target.name)
 
 func track_target():
 	if current_target and is_instance_valid(current_target):
