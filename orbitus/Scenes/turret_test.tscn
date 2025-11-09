@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://crdqrcp6l8l6j"]
+
+[ext_resource type="Script" uid="uid://dwk6kw54fx5u7" path="res://Scenes/turret_test.gd" id="1_8nstx"]
+[ext_resource type="Script" uid="uid://bp7s2mqo60iny" path="res://Scripts/auto_targeting_gun.gd" id="2_858py"]
+[ext_resource type="Texture2D" uid="uid://dbmtluo3kkef8" path="res://Assets/gunC_still.png" id="4_gun_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_168a2"]
+radius = 91.08787
+
+[node name="TurretTest" type="Node2D"]
+script = ExtResource("1_8nstx")
+
+[node name="Turret" type="Node2D" parent="."]
+position = Vector2(151, 120)
+scale = Vector2(0.2, 0.2)
+
+[node name="Gun1" type="Area2D" parent="Turret"]
+script = ExtResource("2_858py")
+
+[node name="RayCast2D" type="RayCast2D" parent="Turret/Gun1"]
+collide_with_areas = true
+
+[node name="Line2D" type="Line2D" parent="Turret/Gun1/RayCast2D"]
+points = PackedVector2Array(140, -79, 250, -78, 250, -78, 279, -78)
+width = 3.0
+default_color = Color(0.46100056, 0.07618212, 0.99999994, 1)
+
+[node name="FireTimer" type="Timer" parent="Turret/Gun1"]
+one_shot = true
+
+[node name="TracerTimer" type="Timer" parent="Turret/Gun1"]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Turret/Gun1"]
+position = Vector2(-7, 30)
+shape = SubResource("CircleShape2D_168a2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Turret/Gun1"]
+texture = ExtResource("4_gun_tex")
+offset = Vector2(0.2, 0.2)
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+position = Vector2(602, 160)
+
+[node name="SpawnTimer" type="Timer" parent="EnemySpawner"]
+wait_time = 3.057
+autostart = true
+
+[connection signal="timeout" from="Turret/Gun1/FireTimer" to="Turret/Gun1" method="_on_fire_timer_timeout"]
+[connection signal="timeout" from="Turret/Gun1/TracerTimer" to="Turret/Gun1" method="_on_tracer_timer_timeout"]
