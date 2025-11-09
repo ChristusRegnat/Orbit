@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://crdqrcp6l8l6j"]
+[gd_scene load_steps=5 format=3 uid="uid://dsan5rvxh8urp"]
 
-[ext_resource type="Script" uid="uid://dwk6kw54fx5u7" path="res://Scenes/turret_test.gd" id="1_8nstx"]
-[ext_resource type="Script" uid="uid://bp7s2mqo60iny" path="res://Scripts/auto_targeting_gun.gd" id="2_858py"]
+[ext_resource type="Script" path="res://Scenes/turret_test.gd" id="1_8nstx"]
+[ext_resource type="Script" path="res://Scripts/auto_targeting_gun.gd" id="2_858py"]
 [ext_resource type="Texture2D" uid="uid://dbmtluo3kkef8" path="res://Assets/gunC_still.png" id="4_gun_tex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_168a2"]
@@ -23,7 +23,7 @@ collide_with_areas = true
 [node name="Line2D" type="Line2D" parent="Turret/Gun1/RayCast2D"]
 points = PackedVector2Array(140, -79, 250, -78, 250, -78, 279, -78)
 width = 3.0
-default_color = Color(0.46100056, 0.07618212, 0.99999994, 1)
+default_color = Color(0.4392157, 0.23137255, 0.65882355, 0.6666667)
 
 [node name="FireTimer" type="Timer" parent="Turret/Gun1"]
 one_shot = true
@@ -40,6 +40,7 @@ texture = ExtResource("4_gun_tex")
 offset = Vector2(0.2, 0.2)
 
 [node name="EnemySpawner" type="Node2D" parent="."]
+visible = false
 position = Vector2(602, 160)
 
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner"]
