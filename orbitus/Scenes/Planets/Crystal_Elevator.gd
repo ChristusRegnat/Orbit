@@ -13,8 +13,11 @@ func _process(_delta):
 	
 		
 func Summon_Ship():
-	var Cargo = Cargo_Ship_Scene.instantiate()
-	add_child(Cargo)
+	if Global.ShipCount < 1:
+		pass
+	else:
+		var Cargo = Cargo_Ship_Scene.instantiate()
+		add_child(Cargo)
 	
 func _on_crystal_button_pressed() -> void:
 	Summon_Ship()

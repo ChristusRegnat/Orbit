@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://yqwqeks4t3r8"]
+[gd_scene load_steps=7 format=3 uid="uid://yqwqeks4t3r8"]
 
 [ext_resource type="Script" uid="uid://cu7o45ydq4ogk" path="res://purchace_ui.gd" id="1_64vjr"]
 [ext_resource type="Texture2D" uid="uid://bsnwpaloefvla" path="res://Assets/BuyShip.png" id="2_w1fx2"]
 [ext_resource type="Texture2D" uid="uid://dsycql4qeed8v" path="res://Assets/BuyTurret.png" id="3_ksfhu"]
+[ext_resource type="Texture2D" uid="uid://bt6bg8a7vcw3a" path="res://Assets/bestheart.png" id="4_svwad"]
+[ext_resource type="Texture2D" uid="uid://dski0gqdjtj1l" path="res://Assets/Spice.png" id="5_ku0kd"]
+[ext_resource type="Texture2D" uid="uid://crsyjwxt78rf7" path="res://Assets/one.png" id="6_sbpgn"]
 
 [node name="PurchaceUI" type="Node2D"]
 script = ExtResource("1_64vjr")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 165.0
-offset_bottom = 82.0
+offset_top = 0.02
+offset_right = 668.0
+offset_bottom = 500.02
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -22,5 +26,28 @@ texture_normal = ExtResource("2_w1fx2")
 layout_mode = 2
 texture_normal = ExtResource("3_ksfhu")
 
+[node name="buy_HP_button" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_svwad")
+stretch_mode = 4
+
+[node name="Line2D" type="Line2D" parent="MarginContainer/HBoxContainer/buy_HP_button"]
+z_index = 1
+points = PackedVector2Array(0, 0, 80, 0, 80, 80, 0, 80)
+closed = true
+width = 2.0
+default_color = Color(0, 0.29803923, 0.43137255, 0.8784314)
+
+[node name="Spice" type="Sprite2D" parent="MarginContainer/HBoxContainer"]
+position = Vector2(224.00002, 59.98)
+scale = Vector2(0.34615403, 0.34615403)
+texture = ExtResource("5_ku0kd")
+
+[node name="One" type="Sprite2D" parent="."]
+position = Vector2(201, 60)
+scale = Vector2(0.3653846, 0.3653846)
+texture = ExtResource("6_sbpgn")
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/buy_ship_button" to="." method="_on_buy_ship_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/buy_turret_button" to="." method="_on_buy_turret_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/buy_HP_button" to="." method="_on_buy_hp_button_pressed"]

@@ -12,9 +12,12 @@ func _process(delta):
 	self.curve.set_point_position(point_index_to_move, to_local(new_position))
 	
 func Summon_Ship():
-	var Cargo = Cargo_Ship_Scene.instantiate()
-	Cargo.scale = Vector2(1 / 3.015, 1 / 3.015)
-	add_child(Cargo)
+	if Global.ShipCount < 1:
+		pass
+	else:
+		var Cargo = Cargo_Ship_Scene.instantiate()
+		Cargo.scale = Vector2(1 / 3.015, 1 / 3.015)
+		add_child(Cargo)
 
 
 func _on_aether_button_pressed() -> void:

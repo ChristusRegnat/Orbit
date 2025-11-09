@@ -75,15 +75,14 @@ texture = ExtResource("6_kk3ma")
 layout_mode = 2
 text = "Play"
 
-[node name="OptionsButton" type="Button" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
-visible = false
+[node name="Tutorial" type="Button" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Options"
+text = "Tutorial"
 
 [node name="QuitButton" type="Button" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

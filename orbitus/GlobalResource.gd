@@ -6,10 +6,10 @@ signal resources_updated(resources_dict)
 
 # Initial resource values
 var resources = {
-	"gold": 4,
-	"crystal": 3, 
-	"spice": 2,
-	"aether": 1
+	"gold": 0,
+	"crystal": 0, 
+	"spice": 0,
+	"aether": 0
 }
 
 func _ready():

@@ -7,6 +7,12 @@ var rand_x = 0
 var rand_y = 0
 
 func _ready():
+	Global.ShipCount = 3
+	Global.TurretCount = 1
+	GlobalResource.set_resource("gold", 1)
+	GlobalResource.set_resource("spice", 2)
+	GlobalResource.set_resource("aether", 2)
+	GlobalResource.set_resource("crystal", 2)
 	randomize()
 	# Summon Bottom Resource Bar
 	var resource_bar = Bottom_Resource_Bar.instantiate()
@@ -16,8 +22,9 @@ func _ready():
 	# Summon HUD
 	var GameHUD = Game_HUD.instantiate()
 	GameHUD.position = Vector2(-630,210)
-	
 	add_child(GameHUD)
+	WaveManager.current_wave = 1
+	
 	
 func enemy_spawns():
 		# Generate rand_x
@@ -30,17 +37,61 @@ func enemy_spawns():
 		rand_y = randi_range(y_range[index][0],y_range[index][1])
 	
 func spawn_enemy():
-	while counter != 6:
-		var enemy = Enemy_Ship_Scene.instantiate()
-		enemy_spawns()
-		enemy.position = Vector2(rand_x,rand_y)
-		add_child(enemy)
-		counter += 1
-	if counter == 6:
-		counter = 0
+	var enemy = Enemy_Ship_Scene.instantiate()
+	enemy_spawns()
+	enemy.position = Vector2(rand_x,rand_y)
+	add_child(enemy)
 	
 	
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("enter"):
-		spawn_enemy()
 	
+	
+func Summon_Wave():
+	if WaveManager.get_current_wave() == 2:
+		#OS.delay_msec(5000)
+		while counter != 15:
+			spawn_enemy()
+			counter += 1
+	elif WaveManager.get_current_wave() == 3:
+		#OS.delay_msec(6000)
+		while counter != 35:
+			spawn_enemy()
+			counter += 1
+	elif WaveManager.get_current_wave() == 4:
+		#OS.delay_msec(8000)
+		while counter != 85:
+			spawn_enemy()
+			counter += 1
+	elif WaveManager.get_current_wave() == 5:
+		#OS.delay_msec(10000)
+		while counter != 155:
+			spawn_enemy()
+			counter += 1
+	elif WaveManager.get_current_wave() == 6:
+		#OS.delay_msec(10000)
+		while counter != 255:
+			spawn_enemy()
+			counter += 1
+	elif WaveManager.get_current_wave() == 7:
+		#OS.delay_msec(10000)
+		while counter != 400:
+			spawn_enemy()
+			counter += 1						
+	elif WaveManager.get_current_wave() == 8:
+		#OS.delay_msec(10000)
+		while counter != 500:
+			spawn_enemy()
+			counter += 1
+			
+						
+var spawn_timer := 0.0
+var spawn_interval := 1.0
+
+func _process(delta: float) -> void:
+	if WaveManager.wave_started:
+		spawn_timer += delta
+		if spawn_timer >= spawn_interval:
+			spawn_timer = 0.0
+			spawn_enemy()
+
+		Summon_Wave()
+		

@@ -13,6 +13,11 @@ func buy_turret() -> void:
 		GlobalResource.modify_resource("aether", -1)
 		Global.increment_turret_count()
 
+func buy_HP() -> void:
+	if (GlobalResource.get_resource("Spice") >= 1):
+		GlobalResource.modify_resource("Spice", -1)
+		Global.HP += 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -28,3 +33,6 @@ func _on_buy_ship_button_pressed() -> void:
 # Attempt to buy a turret when the button is pressed
 func _on_buy_turret_button_pressed() -> void:
 	buy_turret()
+
+func _on_buy_hp_button_pressed() -> void:
+	buy_HP()

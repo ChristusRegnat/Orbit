@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsan5rvxh8urp"]
+[gd_scene load_steps=5 format=3 uid="uid://bhnxh14ag160m"]
 
-[ext_resource type="Script" path="res://Scenes/turret_test.gd" id="1_8nstx"]
-[ext_resource type="Script" path="res://Scripts/auto_targeting_gun.gd" id="2_858py"]
+[ext_resource type="Script" uid="uid://cv8c88tk5u60n" path="res://Scenes/turret_test.gd" id="1_8nstx"]
+[ext_resource type="Script" uid="uid://b6h1ho572phlv" path="res://Scripts/auto_targeting_gun.gd" id="2_858py"]
 [ext_resource type="Texture2D" uid="uid://dbmtluo3kkef8" path="res://Assets/gunC_still.png" id="4_gun_tex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_168a2"]
@@ -18,14 +18,20 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("2_858py")
 
 [node name="RayCast2D" type="RayCast2D" parent="Turret/Gun1"]
+collision_mask = 3
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="Line2D" type="Line2D" parent="Turret/Gun1/RayCast2D"]
-points = PackedVector2Array(140, -79, 250, -78, 250, -78, 279, -78)
+visible = false
+position = Vector2(-762.6667, -86.85714)
+scale = Vector2(6.3333335, -0.14285715)
+points = PackedVector2Array(118.84211, 127, 118.052635, 162, 120.42105, 162, 119.631584, 162)
 width = 3.0
 default_color = Color(0.4392157, 0.23137255, 0.65882355, 0.6666667)
 
 [node name="FireTimer" type="Timer" parent="Turret/Gun1"]
+wait_time = 0.053
 one_shot = true
 
 [node name="TracerTimer" type="Timer" parent="Turret/Gun1"]
@@ -38,6 +44,12 @@ shape = SubResource("CircleShape2D_168a2")
 [node name="Sprite2D" type="Sprite2D" parent="Turret/Gun1"]
 texture = ExtResource("4_gun_tex")
 offset = Vector2(0.2, 0.2)
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="EnemySpawner"]
+wait_time = 100.441
+autostart = true
 
 [connection signal="timeout" from="Turret/Gun1/FireTimer" to="Turret/Gun1" method="_on_fire_timer_timeout"]
 [connection signal="timeout" from="Turret/Gun1/TracerTimer" to="Turret/Gun1" method="_on_tracer_timer_timeout"]

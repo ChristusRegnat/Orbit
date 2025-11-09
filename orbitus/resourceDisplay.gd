@@ -18,9 +18,6 @@ func _ready():
 	if resource_icon:
 		$HBoxContainer/Icon.texture = resource_icon
 	
-	# Connect button signals
-	$HBoxContainer/DecreaseButton.pressed.connect(_on_decrease_pressed)
-	$HBoxContainer/IncreaseButton.pressed.connect(_on_increase_pressed)
 	
 	# Apply styling
 	apply_styling()
@@ -54,9 +51,7 @@ func apply_styling():
 	button_style.corner_radius_bottom_right = 3
 	button_style.corner_radius_bottom_left = 3
 	
-	$HBoxContainer/DecreaseButton.add_theme_stylebox_override("normal", button_style)
-	$HBoxContainer/IncreaseButton.add_theme_stylebox_override("normal", button_style)
-	
+
 	# Ensure the Icon TextureRect is visible and properly sized
 	$HBoxContainer/Icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 	$HBoxContainer/Icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
