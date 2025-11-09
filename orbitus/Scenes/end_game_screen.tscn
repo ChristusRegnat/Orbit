@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://crbm2aq408enm"]
+[gd_scene load_steps=4 format=3 uid="uid://crbm2aq408enm"]
 
 [ext_resource type="Script" uid="uid://di4f2233hiy8i" path="res://Scenes/end_game_screen.gd" id="1_64ufq"]
 [ext_resource type="Texture2D" uid="uid://blljrt7sgxjyo" path="res://Assets/BackgroundImage.jpg" id="2_4xkc4"]
+[ext_resource type="Texture2D" uid="uid://cqku226k74lwk" path="res://Assets/GameOverImage.png" id="3_ku5d1"]
 
 [node name="EndGameScreen" type="Node2D"]
 script = ExtResource("1_64ufq")
@@ -29,23 +30,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-bbcode_enabled = true
-text = "[center][b]Game Over![/b][/center]
-
-
-
-
-
-
-
-
-"
-fit_content = true
-
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Restart"
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(33, -189)
+texture = ExtResource("3_ku5d1")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

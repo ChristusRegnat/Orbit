@@ -17,7 +17,11 @@ config/icon="res://Assets/icon.svg"
 
 [autoload]
 
+<<<<<<< Updated upstream
 GlobalResource="*res://GlobalResource.gd"
+=======
+Global="*res://Scripts/Globals.gd"
+>>>>>>> Stashed changes
 
 [display]
 
