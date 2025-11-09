@@ -3,7 +3,7 @@ extends CharacterBody2D
 var collided : bool = false
 
 func _ready():
-	look_at(get_parent().get_node("Earth").position)
+	look_at(Vector2(0,0))
 
 
 func _physics_process(delta):
