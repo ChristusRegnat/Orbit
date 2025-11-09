@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://ojwfufxcdibw"]
+
+[ext_resource type="Script" uid="uid://nxdbrk3l46e6" path="res://Scenes/gun_orbit_follow.gd" id="1_50x5s"]
+[ext_resource type="Script" uid="uid://ds2ryl85xqb6g" path="res://Scenes/gun_1.gd" id="2_rpvge"]
+[ext_resource type="Texture2D" uid="uid://dbmtluo3kkef8" path="res://Assets/gunC_still.png" id="3_rkvm2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iwy2o"]
+
+[node name="GunObject" type="Node2D"]
+
+[node name="GunOrbit_Follow" type="PathFollow2D" parent="."]
+position = Vector2(120, 0)
+rotation = 1.5707964
+script = ExtResource("1_50x5s")
+
+[node name="Gun1" type="Area2D" parent="GunOrbit_Follow"]
+script = ExtResource("2_rpvge")
+
+[node name="Gun1_Collisions" type="CollisionShape2D" parent="GunOrbit_Follow/Gun1"]
+shape = SubResource("CircleShape2D_iwy2o")
+
+[node name="Sprite2D" type="Sprite2D" parent="GunOrbit_Follow/Gun1/Gun1_Collisions"]
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("3_rkvm2")
+
+[node name="Gun1Raycast" type="RayCast2D" parent="GunOrbit_Follow/Gun1"]
+target_position = Vector2(0, -1000)
+collide_with_areas = true
+
+[node name="Gun1BulletTrace" type="Line2D" parent="GunOrbit_Follow/Gun1/Gun1Raycast"]
+width = 5.0
+default_color = Color(0.4392157, 0.23137255, 0.65882355, 0.6666667)
+
+[node name="Gun1TracerTimer" type="Timer" parent="GunOrbit_Follow/Gun1"]
+
+[connection signal="area_shape_entered" from="GunOrbit_Follow/Gun1" to="GunOrbit_Follow/Gun1" method="_on_area_shape_entered"]
+[connection signal="body_entered" from="GunOrbit_Follow/Gun1" to="GunOrbit_Follow/Gun1" method="_on_body_entered"]
+[connection signal="timeout" from="GunOrbit_Follow/Gun1/Gun1TracerTimer" to="GunOrbit_Follow/Gun1" method="_on_gun_1_tracer_timer_timeout"]
