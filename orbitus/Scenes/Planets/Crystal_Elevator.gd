@@ -3,7 +3,7 @@ extends Path2D
 var point_index_to_move: int = 1         # Index of the point you want to move (0 is the first point)
 const Cargo_Ship_Scene: PackedScene = preload("res://Scenes/Planets/Crystal_Ship.tscn")
 
-func _process(delta):
+func _process(_delta):
 	# Get the target's position relative to the Path2D's parent (global position works best)
 	var new_position: Vector2 = target_object.global_position
 	

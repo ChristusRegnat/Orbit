@@ -50,16 +50,16 @@ size_flags_vertical = 8
 alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
-position = Vector2(35, -365)
+position = Vector2(23, -423)
 texture = ExtResource("3_jsrd8")
 
 [node name="Earth_Sprite" type="Sprite2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
-position = Vector2(37.00003, -160.99997)
+position = Vector2(23.00003, -190.99997)
 scale = Vector2(0.66, 0.66)
 texture = ExtResource("4_jsrd8")
 
 [node name="Path1" type="Path2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
-position = Vector2(37, -161)
+position = Vector2(23, -191)
 curve = SubResource("Curve2D_ecwwl")
 
 [node name="Path1_Follow" type="PathFollow2D" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer/Path1"]
@@ -76,6 +76,7 @@ layout_mode = 2
 text = "Play"
 
 [node name="OptionsButton" type="Button" parent="MainMenuControl/MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Options"
 
