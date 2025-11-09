@@ -1,11 +1,15 @@
 extends Node2D
 const Enemy_Ship_Scene: PackedScene = preload("res://Scenes/enemy_L.tscn")
+const Bottom_Resource_Bar: PackedScene = preload("res://BottomResourceBar.tscn")
 var counter = 0
 var rand_x = 0
 var rand_y = 0
 
 func _ready():
 	randomize()
+	# Summon Bottom Resource Bar
+	var resource_bar = Bottom_Resource_Bar.instantiate()
+	add_child(resource_bar)
 	
 func enemy_spawns():
 		# Generate rand_x
@@ -31,3 +35,4 @@ func spawn_enemy():
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("enter"):
 		spawn_enemy()
+	

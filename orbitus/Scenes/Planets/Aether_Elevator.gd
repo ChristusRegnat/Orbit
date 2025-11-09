@@ -1,7 +1,7 @@
 extends Path2D
 @export var target_object: Node2D = null # Assign your object in the Inspector
 var point_index_to_move: int = 1         # Index of the point you want to move (0 is the first point)
-const Cargo_Ship_Scene: PackedScene = preload("res://Scenes/Cargo_Ship.tscn")
+const Cargo_Ship_Scene: PackedScene = preload("res://Scenes/Planets/Aether_Ship.tscn")
 
 func _process(delta):
 	# Get the target's position relative to the Path2D's parent (global position works best)
@@ -11,10 +11,11 @@ func _process(delta):
 	# Note: curve.set_point_position uses local coordinates relative to the Path2D node
 	self.curve.set_point_position(point_index_to_move, to_local(new_position))
 	
-	if Input.is_action_just_pressed("1"):
-		Summon_Ship()
-		
-		
 func Summon_Ship():
 	var Cargo = Cargo_Ship_Scene.instantiate()
+	Cargo.scale = Vector2(1 / 3.015, 1 / 3.015)
 	add_child(Cargo)
+
+
+func _on_aether_button_pressed() -> void:
+	Summon_Ship()
