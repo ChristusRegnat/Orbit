@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhnxh14ag160m"]
+[gd_scene load_steps=5 format=3 uid="uid://bhnxh14ag160m"]
 
 [ext_resource type="Script" uid="uid://cv8c88tk5u60n" path="res://Scenes/turret_test.gd" id="1_8nstx"]
 [ext_resource type="Script" uid="uid://b6h1ho572phlv" path="res://Scripts/auto_targeting_gun.gd" id="2_858py"]
-[ext_resource type="Script" uid="uid://bf8k7738aeqvo" path="res://Scenes/laser.gd" id="3_858py"]
 [ext_resource type="Texture2D" uid="uid://dbmtluo3kkef8" path="res://Assets/gunC_still.png" id="4_gun_tex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_168a2"]
@@ -30,7 +29,6 @@ scale = Vector2(6.3333335, -0.14285715)
 points = PackedVector2Array(118.84211, 127, 118.052635, 162, 120.42105, 162, 119.631584, 162)
 width = 3.0
 default_color = Color(0.4392157, 0.23137255, 0.65882355, 0.6666667)
-script = ExtResource("3_858py")
 
 [node name="FireTimer" type="Timer" parent="Turret/Gun1"]
 wait_time = 0.053

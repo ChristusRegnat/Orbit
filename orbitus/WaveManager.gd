@@ -13,7 +13,7 @@ var timer: Timer
 var is_wave_active: bool = false
 
 # Wave progression - each wave gets shorter preparation time until boss
-var wave_times = [20.0, 25, 25, 30, 40, 50, 40, 30, 2.0, 1.0]
+var wave_times = [20.0, 25, 20, 20, 10, 50, 40, 30, 2.0, 1.0]
 var boss_wave_number: int = 10
 
 func _ready():
@@ -67,7 +67,7 @@ func simulate_wave_duration():
 	end_wave()
 
 func end_wave():
-	if current_wave < 5:
+	if current_wave < 6:
 		print("Wave %d completed!" % current_wave)
 		wave_ended.emit(current_wave)
 	
@@ -77,6 +77,7 @@ func end_wave():
 		# Start countdown for next wave
 		start_wave_countdown()
 	else:
+		
 		win_screen()
 
 func _process(delta):
