@@ -78,7 +78,7 @@ func _on_increase_pressed():
 	update_display()
 	print("ResourceDisplay: Increase pressed - ", resource_name, " = ", current_amount)
 	resource_changed.emit(resource_name, current_amount)
-	GlobalResource.set_resource(resource_name, current_amount)
+	GlobalResource.add_resource(resource_name)
 	print("Global ", GlobalResource.get_resource(resource_name))
 
 # Function to set the resource from outside

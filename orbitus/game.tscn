@@ -75,8 +75,6 @@ texture = SubResource("GradientTexture2D_eow3j")
 top_level = true
 position = Vector2(90.96, 0)
 script = ExtResource("3_feb5d")
-acceleration = 10.0
-turn_speed = 10.0
 
 [node name="Ship_Collision" type="CollisionShape2D" parent="Ship"]
 shape = SubResource("CapsuleShape2D_e2o6t")

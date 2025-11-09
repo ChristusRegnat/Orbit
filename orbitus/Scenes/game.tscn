@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://mao1pu1ldjj1"]
+[gd_scene load_steps=23 format=3 uid="uid://mao1pu1ldjj1"]
 
 [ext_resource type="Texture2D" uid="uid://blljrt7sgxjyo" path="res://Assets/BackgroundImage.jpg" id="1_1l0tm"]
 [ext_resource type="Script" uid="uid://blksffinkgr3t" path="res://Scenes/game.gd" id="1_iivbl"]
@@ -9,13 +9,14 @@
 [ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://Scripts/path_1_follow.gd" id="4_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://c8r36s71ly4qw" path="res://Assets/gray100.png" id="5_o5yvi"]
 [ext_resource type="Script" uid="uid://4c3ul4w67lqx" path="res://Scenes/planet_1.gd" id="8_7nbq1"]
-[ext_resource type="Script" path="res://Scenes/gun_orbit_trace.gd" id="8_h4fw4"]
-[ext_resource type="Script" path="res://Scenes/gun_orbit_follow.gd" id="9_ldgsr"]
+[ext_resource type="Script" uid="uid://r5172uk0xdig" path="res://Scenes/gun_orbit_trace.gd" id="8_h4fw4"]
+[ext_resource type="Script" uid="uid://nxdbrk3l46e6" path="res://Scenes/gun_orbit_follow.gd" id="9_ldgsr"]
 [ext_resource type="Script" uid="uid://c804y26frd855" path="res://Scenes/elevator.gd" id="10_exi56"]
-[ext_resource type="Script" path="res://Scenes/gun_1.gd" id="10_ldgsr"]
+[ext_resource type="Script" uid="uid://ds2ryl85xqb6g" path="res://Scenes/gun_1.gd" id="10_ldgsr"]
 [ext_resource type="Script" uid="uid://bxpsvdbpdms6l" path="res://Scenes/elevator_follow.gd" id="11_exi56"]
-[ext_resource type="Script" path="res://Scenes/gun_2.gd" id="11_o5yvi"]
+[ext_resource type="Script" uid="uid://cpadaux4ttsbf" path="res://Scenes/gun_2.gd" id="11_o5yvi"]
 [ext_resource type="Texture2D" uid="uid://dbmtluo3kkef8" path="res://Assets/gunC_still.png" id="14_85qyi"]
+[ext_resource type="PackedScene" uid="uid://2pm5h0masax0" path="res://Player/Ship.tscn" id="17_ewbju"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mwb40"]
 
@@ -199,6 +200,8 @@ width = 5.0
 default_color = Color(0.4392157, 0.23137255, 0.65882355, 0.6666667)
 
 [node name="Gun2TracerTimer" type="Timer" parent="GunOrbit/Gun2Orbit_Follow/Gun2"]
+
+[node name="Ship" parent="." instance=ExtResource("17_ewbju")]
 
 [connection signal="area_entered" from="Earth" to="Earth" method="_on_area_entered"]
 [connection signal="body_entered" from="Earth" to="Earth" method="_on_body_entered"]

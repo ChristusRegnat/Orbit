@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://2pm5h0masax0"]
+
+[ext_resource type="Script" uid="uid://2tubse5swepi" path="res://Player/Ship.gd" id="1_r6ofk"]
+[ext_resource type="Texture2D" uid="uid://doyfhhgy8ug1q" path="res://Player/person_no_t.png" id="2_h2x3d"]
+[ext_resource type="Texture2D" uid="uid://cnhtsbnds0www" path="res://Player/gunA_still.png" id="3_iwbh5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_56rjm"]
+radius = 20.0
+height = 66.0
+
+[node name="Ship" type="CharacterBody2D"]
+position = Vector2(203, 152)
+script = ExtResource("1_r6ofk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(6.5799713, -4.0847626)
+rotation = -1.5515977
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_h2x3d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.57995605, -1.0847778)
+shape = SubResource("CapsuleShape2D_56rjm")
+
+[node name="TurretPivot" type="Node2D" parent="."]
+position = Vector2(0.57995605, 11.915222)
+
+[node name="Turret" type="Sprite2D" parent="TurretPivot"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_iwbh5")
+
+[node name="Muzzle" type="Marker2D" parent="TurretPivot/Turret"]
+position = Vector2(0, -20)
+
+[node name="GunCooldownTimer" type="Timer" parent="."]
+one_shot = true
