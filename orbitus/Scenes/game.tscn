@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://mao1pu1ldjj1"]
+[gd_scene load_steps=22 format=3 uid="uid://mao1pu1ldjj1"]
 
 [ext_resource type="Texture2D" uid="uid://blljrt7sgxjyo" path="res://Assets/BackgroundImage.jpg" id="1_1l0tm"]
 [ext_resource type="Script" uid="uid://blksffinkgr3t" path="res://Scenes/game.gd" id="1_iivbl"]
@@ -9,12 +9,11 @@
 [ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://Scripts/path_1_follow.gd" id="4_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://c8r36s71ly4qw" path="res://Assets/gray100.png" id="5_o5yvi"]
 [ext_resource type="Script" uid="uid://4c3ul4w67lqx" path="res://Scenes/planet_1.gd" id="8_7nbq1"]
-[ext_resource type="Script" uid="uid://r5172uk0xdig" path="res://Scenes/gun_orbit_trace.gd" id="8_h4fw4"]
-[ext_resource type="Script" uid="uid://nxdbrk3l46e6" path="res://Scenes/gun_orbit_follow.gd" id="9_ldgsr"]
+[ext_resource type="Script" path="res://Scenes/gun_orbit_trace.gd" id="8_h4fw4"]
+[ext_resource type="Script" path="res://Scenes/gun_orbit_follow.gd" id="9_ldgsr"]
 [ext_resource type="Script" uid="uid://c804y26frd855" path="res://Scenes/elevator.gd" id="10_exi56"]
-[ext_resource type="Script" uid="uid://ds2ryl85xqb6g" path="res://Scenes/gun_1.gd" id="10_ldgsr"]
-[ext_resource type="Script" uid="uid://bxpsvdbpdms6l" path="res://Scenes/elevator_follow.gd" id="11_exi56"]
-[ext_resource type="Script" uid="uid://cpadaux4ttsbf" path="res://Scenes/gun_2.gd" id="11_o5yvi"]
+[ext_resource type="Script" path="res://Scenes/gun_1.gd" id="10_ldgsr"]
+[ext_resource type="Script" path="res://Scenes/gun_2.gd" id="11_o5yvi"]
 [ext_resource type="Texture2D" uid="uid://dbmtluo3kkef8" path="res://Assets/gunC_still.png" id="14_85qyi"]
 [ext_resource type="PackedScene" uid="uid://2pm5h0masax0" path="res://Player/Ship.tscn" id="17_ewbju"]
 
@@ -100,13 +99,6 @@ scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_1phco")
 animation = &"explosion"
 
-[node name="MenuImage" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.6)
-z_index = -1
-texture = ExtResource("1_1l0tm")
-
-[node name="Game_Cam" type="Camera2D" parent="."]
-
 [node name="Path1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_e2o6t")
 
@@ -135,13 +127,92 @@ curve = SubResource("Curve2D_mg4q0")
 script = ExtResource("10_exi56")
 target_object = NodePath("../Planet1_Collisions")
 
-[node name="Elevator_Follow" type="PathFollow2D" parent="Path1/Path1_Follow/Planet1/Elevator"]
-position = Vector2(0, 120)
-rotation = -0.72511715
-rotates = false
-loop = false
-script = ExtResource("11_exi56")
-speed = 1.0
+[node name="Path2" type="Path2D" parent="."]
+scale = Vector2(1.52, 1.52)
+curve = SubResource("Curve2D_e2o6t")
+
+[node name="Path1_Trace" type="Line2D" parent="Path2"]
+script = ExtResource("3_h4fw4")
+
+[node name="Path1_Follow" type="PathFollow2D" parent="Path2"]
+position = Vector2(120, 0)
+rotation = 1.5707964
+script = ExtResource("4_ldgsr")
+speed = 50.0
+
+[node name="Planet1" type="Area2D" parent="Path2/Path1_Follow" groups=["outer_planets"]]
+script = ExtResource("8_7nbq1")
+
+[node name="Planet1_Collisions" type="CollisionShape2D" parent="Path2/Path1_Follow/Planet1"]
+shape = SubResource("CircleShape2D_feb5d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2/Path1_Follow/Planet1/Planet1_Collisions"]
+position = Vector2(0.195, 0.38)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("5_o5yvi")
+
+[node name="Elevator" type="Path2D" parent="Path2/Path1_Follow/Planet1" node_paths=PackedStringArray("target_object")]
+curve = SubResource("Curve2D_mg4q0")
+script = ExtResource("10_exi56")
+target_object = NodePath("../Planet1_Collisions")
+
+[node name="Path3" type="Path2D" parent="."]
+scale = Vector2(2.135, 2.135)
+curve = SubResource("Curve2D_e2o6t")
+
+[node name="Path1_Trace" type="Line2D" parent="Path3"]
+script = ExtResource("3_h4fw4")
+
+[node name="Path1_Follow" type="PathFollow2D" parent="Path3"]
+position = Vector2(120, 0)
+rotation = 1.5707964
+script = ExtResource("4_ldgsr")
+speed = 50.0
+
+[node name="Planet1" type="Area2D" parent="Path3/Path1_Follow" groups=["outer_planets"]]
+script = ExtResource("8_7nbq1")
+
+[node name="Planet1_Collisions" type="CollisionShape2D" parent="Path3/Path1_Follow/Planet1"]
+shape = SubResource("CircleShape2D_feb5d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path3/Path1_Follow/Planet1/Planet1_Collisions"]
+position = Vector2(0.195, 0.38)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("5_o5yvi")
+
+[node name="Elevator" type="Path2D" parent="Path3/Path1_Follow/Planet1" node_paths=PackedStringArray("target_object")]
+curve = SubResource("Curve2D_mg4q0")
+script = ExtResource("10_exi56")
+target_object = NodePath("../Planet1_Collisions")
+
+[node name="Path4" type="Path2D" parent="."]
+scale = Vector2(3.015, 3.015)
+curve = SubResource("Curve2D_e2o6t")
+
+[node name="Path1_Trace" type="Line2D" parent="Path4"]
+script = ExtResource("3_h4fw4")
+
+[node name="Path1_Follow" type="PathFollow2D" parent="Path4"]
+position = Vector2(120, 0)
+rotation = 1.5707964
+script = ExtResource("4_ldgsr")
+speed = 50.0
+
+[node name="Planet1" type="Area2D" parent="Path4/Path1_Follow" groups=["outer_planets"]]
+script = ExtResource("8_7nbq1")
+
+[node name="Planet1_Collisions" type="CollisionShape2D" parent="Path4/Path1_Follow/Planet1"]
+shape = SubResource("CircleShape2D_feb5d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path4/Path1_Follow/Planet1/Planet1_Collisions"]
+position = Vector2(0.195, 0.38)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("5_o5yvi")
+
+[node name="Elevator" type="Path2D" parent="Path4/Path1_Follow/Planet1" node_paths=PackedStringArray("target_object")]
+curve = SubResource("Curve2D_mg4q0")
+script = ExtResource("10_exi56")
+target_object = NodePath("../Planet1_Collisions")
 
 [node name="GunOrbit" type="Path2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -203,10 +274,23 @@ default_color = Color(0.4392157, 0.23137255, 0.65882355, 0.6666667)
 
 [node name="Ship" parent="." instance=ExtResource("17_ewbju")]
 
+[node name="MenuImage" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.6)
+z_index = -1
+texture = ExtResource("1_1l0tm")
+
+[node name="Game_Cam" type="Camera2D" parent="."]
+
 [connection signal="area_entered" from="Earth" to="Earth" method="_on_area_entered"]
 [connection signal="body_entered" from="Earth" to="Earth" method="_on_body_entered"]
 [connection signal="area_shape_entered" from="Path1/Path1_Follow/Planet1" to="Path1/Path1_Follow/Planet1" method="_on_area_shape_entered"]
 [connection signal="body_entered" from="Path1/Path1_Follow/Planet1" to="Path1/Path1_Follow/Planet1" method="_on_body_entered"]
+[connection signal="area_shape_entered" from="Path2/Path1_Follow/Planet1" to="Path2/Path1_Follow/Planet1" method="_on_area_shape_entered"]
+[connection signal="body_entered" from="Path2/Path1_Follow/Planet1" to="Path2/Path1_Follow/Planet1" method="_on_body_entered"]
+[connection signal="area_shape_entered" from="Path3/Path1_Follow/Planet1" to="Path3/Path1_Follow/Planet1" method="_on_area_shape_entered"]
+[connection signal="body_entered" from="Path3/Path1_Follow/Planet1" to="Path3/Path1_Follow/Planet1" method="_on_body_entered"]
+[connection signal="area_shape_entered" from="Path4/Path1_Follow/Planet1" to="Path4/Path1_Follow/Planet1" method="_on_area_shape_entered"]
+[connection signal="body_entered" from="Path4/Path1_Follow/Planet1" to="Path4/Path1_Follow/Planet1" method="_on_body_entered"]
 [connection signal="area_shape_entered" from="GunOrbit/GunOrbit_Follow/Gun1" to="GunOrbit/GunOrbit_Follow/Gun1" method="_on_area_shape_entered"]
 [connection signal="body_entered" from="GunOrbit/GunOrbit_Follow/Gun1" to="GunOrbit/GunOrbit_Follow/Gun1" method="_on_body_entered"]
 [connection signal="timeout" from="GunOrbit/GunOrbit_Follow/Gun1/Gun1TracerTimer" to="GunOrbit/GunOrbit_Follow/Gun1" method="_on_gun_1_tracer_timer_timeout"]
