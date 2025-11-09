@@ -13,6 +13,7 @@ func _ready():
 	GlobalResource.set_resource("spice", 2)
 	GlobalResource.set_resource("aether", 2)
 	GlobalResource.set_resource("crystal", 2)
+	WaveManager.spawning = true
 	randomize()
 	# Summon Bottom Resource Bar
 	var resource_bar = Bottom_Resource_Bar.instantiate()
@@ -89,7 +90,7 @@ var spawn_interval := 1.0
 func _process(delta: float) -> void:
 	if WaveManager.wave_started:
 		spawn_timer += delta
-		if spawn_timer >= spawn_interval:
+		if spawn_timer >= spawn_interval && WaveManager.spawning == true:
 			spawn_timer = 0.0
 			spawn_enemy()
 
