@@ -7,6 +7,7 @@ var rand_x = 0
 var rand_y = 0
 
 func _ready():
+	Global.ShipCount = 3
 	randomize()
 	# Summon Bottom Resource Bar
 	var resource_bar = Bottom_Resource_Bar.instantiate()
@@ -37,19 +38,19 @@ func spawn_enemy():
 	
 func Summon_Wave():
 	if WaveManager.get_current_wave() == 2:
-		while counter != 15:
+		while counter != 5:
 			spawn_enemy()
 			counter += 1
 	elif WaveManager.get_current_wave() == 3:
-		while counter != 35:
+		while counter != 25:
 			spawn_enemy()
 			counter += 1
 	elif WaveManager.get_current_wave() == 4:
-		while counter != 65:
+		while counter != 55:
 			spawn_enemy()
 			counter += 1
 	elif WaveManager.get_current_wave() == 5:
-		while counter != 165:
+		while counter != 155:
 			spawn_enemy()
 			counter += 1
 			

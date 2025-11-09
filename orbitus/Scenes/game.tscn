@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://mao1pu1ldjj1"]
+[gd_scene load_steps=29 format=3 uid="uid://mao1pu1ldjj1"]
 
 [ext_resource type="Texture2D" uid="uid://blljrt7sgxjyo" path="res://Assets/BackgroundImage.jpg" id="1_1l0tm"]
 [ext_resource type="Script" uid="uid://blksffinkgr3t" path="res://Scenes/game.gd" id="1_iivbl"]
@@ -7,18 +7,19 @@
 [ext_resource type="Script" uid="uid://c170egulbmhw6" path="res://Scripts/path_1_trace.gd" id="3_h4fw4"]
 [ext_resource type="Texture2D" uid="uid://5brfljilqgfl" path="res://Assets/redboom.png" id="3_rfjv2"]
 [ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://Scripts/path_1_follow.gd" id="4_ldgsr"]
+[ext_resource type="Script" uid="uid://dncle6nwu4wif" path="res://Scenes/ship_counter.gd" id="5_7t8sx"]
 [ext_resource type="Texture2D" uid="uid://c8r36s71ly4qw" path="res://Assets/gray100.png" id="5_o5yvi"]
 [ext_resource type="Script" uid="uid://4c3ul4w67lqx" path="res://Scenes/planet_1.gd" id="8_7nbq1"]
-[ext_resource type="Script" uid="uid://r5172uk0xdig" path="res://Scenes/gun_orbit_trace.gd" id="8_h4fw4"]
+[ext_resource type="Script" path="res://Scenes/gun_orbit_trace.gd" id="8_h4fw4"]
 [ext_resource type="Script" uid="uid://c804y26frd855" path="res://Scenes/Planets/Crystal_Elevator.gd" id="10_exi56"]
 [ext_resource type="Texture2D" uid="uid://b6jhehxuwqq4j" path="res://Assets/gold100.png" id="10_iivbl"]
 [ext_resource type="Texture2D" uid="uid://7el2kvyr2e62" path="res://Assets/red100%.png" id="11_7nbq1"]
 [ext_resource type="Script" uid="uid://b5sf76brw5s0u" path="res://Scenes/Planets/Gold_Elevator.gd" id="11_7t8sx"]
 [ext_resource type="Texture2D" uid="uid://gmab1rcet1mt" path="res://Assets/purple100.png" id="12_exi56"]
-[ext_resource type="Script" uid="uid://nmf3brmes80f" path="res://gun_orbit.gd" id="12_nnt18"]
+[ext_resource type="Script" path="res://gun_orbit.gd" id="12_nnt18"]
 [ext_resource type="Script" uid="uid://6y6knkbej7tx" path="res://Scenes/Planets/Spice_Elevator.gd" id="13_mg4q0"]
 [ext_resource type="Script" uid="uid://d3os1bsoh5egx" path="res://Scenes/Planets/Aether_Elevator.gd" id="15_vm72l"]
-[ext_resource type="PackedScene" uid="uid://bkls0pnfqksoh" path="res://gun_orbit_follow_object.tscn" id="17_ewbju"]
+[ext_resource type="PackedScene" path="res://gun_orbit_follow_object.tscn" id="17_ewbju"]
 [ext_resource type="PackedScene" uid="uid://yqwqeks4t3r8" path="res://Scenes/purchace_ui.tscn" id="18_85qyi"]
 [ext_resource type="PackedScene" uid="uid://2pm5h0masax0" path="res://Player/Ship.tscn" id="18_iivbl"]
 
@@ -73,6 +74,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_7t8sx"]
+font_size = 30
+
 [sub_resource type="Curve2D" id="Curve2D_e2o6t"]
 _data = {
 "points": PackedVector2Array(70, 0, 0, 70, 120, 0, 70, 0, -70, 0, 0, 120, 0, 70, 0, -70, -120, 0, -70, 0, 70, 0, 0, -120, 0, -70, 0, 70, 120, 0)
@@ -111,6 +115,15 @@ scale = Vector2(0.455, 0.455)
 [node name="Earth_Collision" type="CollisionShape2D" parent="Earth/StaticBody2D"]
 scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_mwb40")
+
+[node name="Ship_Counter" type="Label" parent="Earth"]
+offset_left = -8.0
+offset_top = -22.0
+offset_right = 30.0
+offset_bottom = 32.0
+text = "3"
+label_settings = SubResource("LabelSettings_7t8sx")
+script = ExtResource("5_7t8sx")
 
 [node name="Path1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_e2o6t")

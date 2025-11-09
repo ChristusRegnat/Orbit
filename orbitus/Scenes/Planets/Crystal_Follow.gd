@@ -27,6 +27,7 @@ func _play_ship_sound():
 	
 func _ready():
 	self.progress_ratio = 0
+	Global.ShipCount -= 1
 		
 	
 func _process(delta):
@@ -35,6 +36,7 @@ func _process(delta):
 	else:
 		GlobalResource.modify_resource("Crystal", 1)
 		print(GlobalResource.get_resource("Crystal"))
+		Global.ShipCount += 1
 		queue_free()
 
 func move(delta):

@@ -28,6 +28,7 @@ func _play_ship_sound():
 	temp_player.play()
 func _ready():
 	self.progress_ratio = 0
+	Global.ShipCount -= 1
 	
 func _process(delta):
 	if progress_ratio < 1:
@@ -35,6 +36,7 @@ func _process(delta):
 	else:
 		GlobalResource.modify_resource("Gold", 1)
 		print(GlobalResource.get_resource("Gold"))
+		Global.ShipCount += 1
 		queue_free()
 
 func move(delta):

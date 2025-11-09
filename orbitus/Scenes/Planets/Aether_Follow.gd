@@ -31,15 +31,16 @@ func _play_ship_sound():
 
 func _ready():
 	self.progress_ratio = 0
-		
+	Global.ShipCount -= 1
 	
 func _process(delta):
 	if progress_ratio < 1:
 		move(delta)
 	else:
 		# Runs when the ship reaches the end (progress_ratio is 1 or more)
-		GlobalResource.modify_resource("Crystal", 1)
-		print(GlobalResource.get_resource("Crystal"))
+		GlobalResource.modify_resource("Aether", 1)
+		print(GlobalResource.get_resource("Aether"))
+		Global.ShipCount += 1
 		queue_free()
 
 func move(delta):

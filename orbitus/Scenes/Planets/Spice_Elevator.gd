@@ -13,9 +13,12 @@ func _process(delta):
 	
 
 func Summon_Ship():
-	var Cargo = Cargo_Ship_Scene.instantiate()
-	Cargo.scale = Vector2(1 / 2.135, 1 / 2.135)
-	add_child(Cargo)
+	if Global.ShipCount < 1:
+		pass
+	else:
+		var Cargo = Cargo_Ship_Scene.instantiate()
+		Cargo.scale = Vector2(1 / 2.135, 1 / 2.135)
+		add_child(Cargo)
 
 
 func _on_spice_button_pressed() -> void:
