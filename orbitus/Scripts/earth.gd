@@ -1,6 +1,7 @@
 extends Area2D
 @export var HP : int = 5
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
+var is_dead : bool = false
 
 func _ready():
 	animated_sprite.play("100")
@@ -17,6 +18,10 @@ func _on_body_entered(body: Node2D) -> void:
 	if HP > 0:
 		pass
 	else:
-		die()
+		if is_dead == false:
+			is_dead = true
+			die()
+		else:
+			pass
 
 	

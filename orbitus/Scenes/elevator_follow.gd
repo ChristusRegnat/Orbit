@@ -4,7 +4,7 @@ const Cargo_Ship_Scene: PackedScene = preload("res://Scenes/Cargo_Ship.tscn")
 var Cargo_Active : bool = false
 
 func _ready():
-	spawn_cargo_ship()
+	pass
 	
 func spawn_cargo_ship():
 	var spawn_cargo = Cargo_Ship_Scene.instantiate()
