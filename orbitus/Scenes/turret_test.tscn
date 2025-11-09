@@ -23,7 +23,10 @@ hit_from_inside = true
 collide_with_areas = true
 
 [node name="Line2D" type="Line2D" parent="Turret/Gun1/RayCast2D"]
-points = PackedVector2Array(140, -79, 250, -78, 250, -78, 279, -78)
+visible = false
+position = Vector2(-762.6667, -86.85714)
+scale = Vector2(6.3333335, -0.14285715)
+points = PackedVector2Array(118.84211, 127, 118.052635, 162, 120.42105, 162, 119.631584, 162)
 width = 3.0
 default_color = Color(0.4392157, 0.23137255, 0.65882355, 0.6666667)
 
@@ -45,7 +48,7 @@ offset = Vector2(0.2, 0.2)
 [node name="EnemySpawner" type="Node2D" parent="."]
 
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner"]
-wait_time = 2.312
+wait_time = 100.441
 autostart = true
 
 [connection signal="timeout" from="Turret/Gun1/FireTimer" to="Turret/Gun1" method="_on_fire_timer_timeout"]

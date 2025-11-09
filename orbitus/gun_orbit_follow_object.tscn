@@ -25,6 +25,7 @@ hit_from_inside = true
 collide_with_areas = true
 
 [node name="Line2D" type="Line2D" parent="Turret/Gun1/RayCast2D"]
+visible = false
 points = PackedVector2Array(140, -79, 250, -78, 250, -78, 279, -78)
 width = 3.0
 default_color = Color(0.4392157, 0.23137255, 0.65882355, 0.6666667)
