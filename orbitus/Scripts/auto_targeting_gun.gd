@@ -14,7 +14,7 @@ var can_fire: bool = true
 
 func _ready() -> void:
 	if debug_mode:
-		print("Gun initialized - RayCast enabled: ", ray_cast.enabled if ray_cast else "NO RAYCAST")
+		pass
 	
 	# Set up fire rate timer
 	if fire_timer:
@@ -23,7 +23,7 @@ func _ready() -> void:
 		fire_timer.start()
 	else:
 		if debug_mode:
-			print("ERROR: No FireTimer found!")
+			pass
 	
 	# Set raycast range
 	if ray_cast:
@@ -33,7 +33,7 @@ func _ready() -> void:
 		ray_cast.collide_with_bodies = true
 	else:
 		if debug_mode:
-			print("ERROR: No RayCast2D found!")
+			pass
 
 func _process(_delta: float) -> void:
 	# Find and track targets
@@ -46,14 +46,14 @@ func _process(_delta: float) -> void:
 		# Auto-fire when target is acquired
 		if can_fire and is_target_in_range():
 			if debug_mode:
-				print("Firing at target!")
+				pass
 			shoot()
 		elif debug_mode:
 			if not can_fire:
-				print("Cannot fire: cooling down")
+				pass
 			if not is_target_in_range() and current_target:
 				var distance = global_position.distance_to(current_target.global_position)
-				print("Target out of range: ", distance, " > ", range_distance)
+				pass
 
 
 
@@ -61,7 +61,7 @@ func find_target():
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	
 	if debug_mode:
-		print("Looking for enemies. Found: ", enemies.size())
+		pass
 	
 	# Filter out enemies that are already targeted
 	var available_enemies = []
@@ -75,7 +75,7 @@ func find_target():
 		current_target = available_enemies[randi() % available_enemies.size()]
 	
 	if debug_mode and current_target:
-		print("Target acquired: ", current_target.name)
+		pass
 
 func track_target():
 	if current_target and is_instance_valid(current_target):
@@ -87,26 +87,26 @@ func track_target():
 		global_rotation = angle + PI/2  # +PI/2 if your gun sprite faces up
 		
 		if debug_mode:
-			print("Tracking target - Rotation: ", global_rotation)
+			pass
 
 func is_target_in_range() -> bool:
 	if not current_target:
 		if debug_mode:
-			print("No target to check range")
+			pass
 		return false
 	
 	var distance = global_position.distance_to(current_target.global_position)
 	var in_range = distance <= range_distance
 	
 	if debug_mode:
-		print("Target range check: ", distance, " <= ", range_distance, " = ", in_range)
+		pass
 	
 	return in_range
 
 func shoot():
 	if not current_target:
 		if debug_mode:
-			print("No target to shoot at!")
+			pass
 		return
 	
 	can_fire = false
@@ -115,7 +115,7 @@ func shoot():
 		fire_timer.start()
 	else:
 		if debug_mode:
-			print("ERROR: No fire timer!")
+			pass
 	
 	# Update raycast to current rotation
 	if ray_cast:
@@ -126,7 +126,7 @@ func shoot():
 			var collider = ray_cast.get_collider()
 			
 			if debug_mode:
-				print("RayCast hit: ", collider.name if collider else "Unknown")
+				pass
 			
 			# Draw tracer line
 			if tracer_line:
@@ -137,18 +137,18 @@ func shoot():
 			# Damage the enemy
 			if collider and collider.is_in_group("enemies"):
 				if debug_mode:
-					print("Damaging enemy!")
+					pass
 				collider.take_damage(damage)
 			else:
 				if debug_mode:
-					print("Collider is not an enemy or not in group 'enemies'")
+					pass
 			
 			# Start timer to clear tracer
 			if has_node("TracerTimer"):
 				get_node("TracerTimer").start(0.1)
 		else:
 			if debug_mode:
-				print("RayCast did not collide with anything")
+				pass
 			# If no collision, show full range line
 			if tracer_line:
 				tracer_line.points = [Vector2.ZERO, ray_cast.target_position]
@@ -156,12 +156,12 @@ func shoot():
 				get_node("TracerTimer").start(0.1)
 	else:
 		if debug_mode:
-			print("ERROR: No raycast to shoot with!")
+			pass
 
 func _on_fire_timer_timeout():
 	can_fire = true
 	if debug_mode:
-		print("Fire cooldown complete - ready to fire again")
+		pass
 
 func _on_tracer_timer_timeout():
 	if tracer_line:

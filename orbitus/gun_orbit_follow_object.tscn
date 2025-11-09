@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://nxdbrk3l46e6" path="res://Scenes/gun_orbit_follow.gd" id="1_hmt0f"]
 [ext_resource type="Script" uid="uid://b6h1ho572phlv" path="res://Scripts/auto_targeting_gun.gd" id="2_hmt0f"]
 [ext_resource type="Texture2D" uid="uid://dbmtluo3kkef8" path="res://Assets/gunC_still.png" id="3_duqn7"]
-[ext_resource type="PackedScene" path="res://Scenes/turret_test.tscn" id="4_s4ito"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s4ito"]
 radius = 91.08787

@@ -37,5 +37,5 @@ func _spawn_turrets(turret_count: int) -> void:
 		var offset: float = (1.0 / turret_count) * i
 
 		# Apply the offset
-		print(offset)
+		pass
 		turret_instance.set_offset(offset)
