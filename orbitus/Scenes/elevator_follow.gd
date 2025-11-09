@@ -1,6 +1,6 @@
 extends PathFollow2D
 const Cargo_Ship_Scene: PackedScene = preload("res://Scenes/Cargo_Ship.tscn")
-@export var speed : float = 100
+@export var speed : float = 5
 var Cargo_Active : bool = false
 
 func _ready():
@@ -11,15 +11,17 @@ func spawn_cargo_ship():
 	return spawn_cargo
 
 
-func _physics_process(delta):
+func _process(delta):
 	if Cargo_Active == true:
-		if progress < 100:
-			progress += speed * delta
-			print(progress)
+		if progress_ratio < 1:
+			move(delta)
 		else:
 			Cargo_Active = false
 	else:
 		if Input.is_action_just_pressed("1"):
 			add_child(spawn_cargo_ship())
 			Cargo_Active = true
+
+func move(delta):
+	progress_ratio += speed * delta
 	
