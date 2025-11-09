@@ -11,9 +11,11 @@ var current_wave: int = 1
 var time_between_waves: float = 10.0  # Start with 10 seconds for testing
 var timer: Timer
 var is_wave_active: bool = false
+var spawning: bool = true
+
 
 # Wave progression - each wave gets shorter preparation time until boss
-var wave_times = [20.0, 25, 20, 20, 10, 50, 40, 30, 2.0, 1.0]
+var wave_times = [10, 20, 30, 20, 10, 40, 40, 30, 2.0, 1.0]
 var boss_wave_number: int = 10
 
 func _ready():
@@ -70,14 +72,15 @@ func end_wave():
 	if current_wave < 6:
 		print("Wave %d completed!" % current_wave)
 		wave_ended.emit(current_wave)
-	
-		# Move to next wave
-		current_wave += 1
-	
-		# Start countdown for next wave
-		start_wave_countdown()
-	else:
 		
+		current_wave += 1
+		start_wave_countdown()
+
+	elif current_wave == 6:
+		WaveManager.spawning = false  # Turn on a boolean if you use one
+		await get_tree().create_timer(10.0).timeout  # Wait 10 seconds
+		win_screen()
+	else:
 		win_screen()
 
 func _process(delta):
