@@ -8,7 +8,10 @@ func _ready():
 	
 func spawn_cargo_ship():
 	var spawn_cargo = Cargo_Ship_Scene.instantiate()
-	return spawn_cargo
+	# **CHANGE 1: Add the instance as a child of this PathFollow2D node.**
+	add_child(spawn_cargo) 
+	self.progress_ratio = 0.0 # Reset movement progress
+	# Removed the 'return spawn_cargo' line as it's no longer needed.
 
 
 func _process(delta):
@@ -19,7 +22,7 @@ func _process(delta):
 			Cargo_Active = false
 	else:
 		if Input.is_action_just_pressed("1"):
-			add_child(spawn_cargo_ship())
+			spawn_cargo_ship()
 			Cargo_Active = true
 
 func move(delta):
