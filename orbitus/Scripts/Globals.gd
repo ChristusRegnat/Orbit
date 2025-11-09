@@ -10,7 +10,7 @@ signal ship_count_changed(new_value: int)
 static var WinCondition: bool = true
 var TurretCount: int = 3
 var ShipCount: int = 3
-var HP: int = 5
+var HP: int = 10
 
 func increment_turret_count() -> void:
 	TurretCount += 1
