@@ -39,8 +39,8 @@ func _process(delta):
 		move(delta)
 	else:
 		# Runs when the ship reaches the end (progress_ratio is 1 or more)
-		GlobalResource.modify_resource("Crystal", 1)
-		print(GlobalResource.get_resource("Crystal"))
+		GlobalResource.modify_resource("Spice", 1)
+		print(GlobalResource.get_resource("Spice"))
 		Global.ShipCount += 1
 		queue_free()
 

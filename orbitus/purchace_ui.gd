@@ -33,3 +33,6 @@ func _on_buy_ship_button_pressed() -> void:
 # Attempt to buy a turret when the button is pressed
 func _on_buy_turret_button_pressed() -> void:
 	buy_turret()
+
+func _on_buy_hp_button_pressed() -> void:
+	buy_HP()
