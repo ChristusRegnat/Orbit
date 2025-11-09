@@ -2,7 +2,11 @@
 
 importer="mp3"
 type="AudioStreamMP3"
+<<<<<<< Updated upstream
 uid="uid://w6o2kfltnox3"
+=======
+uid="uid://c0f0jm1abvn50"
+>>>>>>> Stashed changes
 path="res://.godot/imported/GunC sound-[AudioTrimmer.com].mp3-7cf471631f3f3ab6eedebb8b62a86e30.mp3str"
 
 [deps]
