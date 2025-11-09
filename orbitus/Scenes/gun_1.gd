@@ -1,8 +1,12 @@
 extends Area2D
 
+const GUN_SOUND_RESOURCE = preload("res://Sounds/GunC sound-[AudioTrimmer.com].mp3")
+
 @onready var ray_cast: RayCast2D = $Gun1Raycast
 @onready var tracer_line: Line2D = $Gun1Raycast/Gun1BulletTrace
 @onready var tracer_timer: Timer = $Gun1TracerTimer # Reference to a Timer node
+
+var shoot_sound: AudioStreamPlayer2D = null 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,7 +32,25 @@ func _input(event: InputEvent) -> void:
 func shoot():
 	# Force update if necessary (if shooting multiple times per physics frame)
 	# ray_cast.force_raycast_update() 
-
+	if GUN_SOUND_RESOURCE is AudioStream:
+		# Create a new AudioStreamPlayer2D node
+		var temp_sound = AudioStreamPlayer2D.new()
+		
+		# Set its audio stream resource (using the preloaded file)
+		temp_sound.stream = GUN_SOUND_RESOURCE
+		
+		# Set its position to the gun's position (for 2D sound spatialization)
+		temp_sound.global_position = global_position
+		
+		# Add it to the scene tree
+		get_tree().current_scene.add_child(temp_sound)
+		
+		# Connect the 'finished' signal to automatically delete the node
+		temp_sound.connect("finished", Callable(temp_sound, "queue_free")) 
+		
+		# Play the sound!
+		temp_sound.play()
+		
 	if ray_cast.is_colliding():
 		var collision_point: Vector2 = ray_cast.get_collision_point()
 		

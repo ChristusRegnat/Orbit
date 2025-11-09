@@ -67,14 +67,17 @@ func simulate_wave_duration():
 	end_wave()
 
 func end_wave():
-	print("Wave %d completed!" % current_wave)
-	wave_ended.emit(current_wave)
+	if current_wave < 5:
+		print("Wave %d completed!" % current_wave)
+		wave_ended.emit(current_wave)
 	
-	# Move to next wave
-	current_wave += 1
+		# Move to next wave
+		current_wave += 1
 	
-	# Start countdown for next wave
-	start_wave_countdown()
+		# Start countdown for next wave
+		start_wave_countdown()
+	else:
+		win_screen()
 
 func _process(delta):
 	if timer and not is_wave_active:
@@ -98,3 +101,7 @@ func skip_to_next_wave():
 	if timer:
 		timer.stop()
 		start_wave()
+
+# win screen go brrrrrrr
+func win_screen():
+	get_tree().change_scene_to_file("res://Scenes/WinGameScreen.tscn")

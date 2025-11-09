@@ -14,7 +14,7 @@ func die():
 		
 func _on_body_entered(body: Node2D) -> void:
 	HP -= 1
-	print(HP)
+	print("MY HP IS ", HP)
 	if HP > 0:
 		pass
 	else:

@@ -7,6 +7,8 @@
 
 [node name="Enemy_S" type="CharacterBody2D"]
 top_level = true
+collision_layer = 2
+collision_mask = 253
 script = ExtResource("1_41d7s")
 
 [node name="Ship_Sprite" type="Sprite2D" parent="."]
