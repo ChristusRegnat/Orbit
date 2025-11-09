@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://5jbyqno5s65j"]
+[gd_scene load_steps=4 format=3 uid="uid://tr63cpq7hxpl"]
 
 [ext_resource type="Texture2D" uid="uid://7g41vgbmixry" path="res://tut1.png" id="1_7ea5i"]
-[ext_resource type="AudioStream" uid="uid://w6o2kfltnox3" path="res://Sounds/GunC sound-[AudioTrimmer.com].mp3" id="2_wse8i"]
+[ext_resource type="Script" uid="uid://kwu3bh3083y3" path="res://tut_1.gd" id="1_ofb0a"]
+[ext_resource type="AudioStream" uid="uid://bjrm47ys7xqw7" path="res://Sounds/GunC sound-[AudioTrimmer.com].mp3" id="2_wse8i"]
 
 [node name="Tut1" type="Node2D"]
+script = ExtResource("1_ofb0a")
 
 [node name="Tut1" type="Sprite2D" parent="."]
 position = Vector2(576.00006, 326)
@@ -12,3 +14,20 @@ texture = ExtResource("1_7ea5i")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Tut1"]
 stream = ExtResource("2_wse8i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 72.0
+offset_top = 551.0
+offset_right = 166.0
+offset_bottom = 629.0
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Next"
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Button2" to="." method="_on_button_2_pressed"]

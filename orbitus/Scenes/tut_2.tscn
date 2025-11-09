@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://brmkr0847c6kt"]
+
+[ext_resource type="Texture2D" uid="uid://combdqn7ednex" path="res://tut2 - Copy.png" id="1_0dyno"]
+[ext_resource type="Script" uid="uid://dqr8p3jydqayr" path="res://Scenes/tut_2.gd" id="1_g1mca"]
+
+[node name="tut_2" type="Node2D"]
+script = ExtResource("1_g1mca")
+
+[node name="Tut2Copy" type="Sprite2D" parent="."]
+position = Vector2(576.5, 327.00003)
+scale = Vector2(0.64991534, 0.6524823)
+texture = ExtResource("1_0dyno")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 40.0
+offset_top = 472.0
+offset_right = 134.0
+offset_bottom = 550.0
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Next"
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
