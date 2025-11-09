@@ -1,0 +1,164 @@
+[gd_scene load_steps=22 format=3 uid="uid://mao1pu1ldjj1"]
+
+[ext_resource type="Texture2D" uid="uid://blljrt7sgxjyo" path="res://Assets/BackgroundImage.jpg" id="1_1l0tm"]
+[ext_resource type="Script" uid="uid://blksffinkgr3t" path="res://Scenes/game.gd" id="1_iivbl"]
+[ext_resource type="Script" uid="uid://cemk76ndo6lus" path="res://Scripts/earth.gd" id="1_o5yvi"]
+[ext_resource type="Texture2D" uid="uid://bc4dikcovhm3f" path="res://Assets/earth100.png" id="2_rku1e"]
+[ext_resource type="Script" uid="uid://c170egulbmhw6" path="res://Scripts/path_1_trace.gd" id="3_h4fw4"]
+[ext_resource type="Texture2D" uid="uid://5brfljilqgfl" path="res://Assets/redboom.png" id="3_rfjv2"]
+[ext_resource type="Script" uid="uid://b3yhki4anqdlg" path="res://Scripts/path_1_follow.gd" id="4_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://c8r36s71ly4qw" path="res://Assets/gray100.png" id="5_o5yvi"]
+[ext_resource type="Script" uid="uid://4c3ul4w67lqx" path="res://Scenes/planet_1.gd" id="8_7nbq1"]
+[ext_resource type="Script" uid="uid://r5172uk0xdig" path="res://Scenes/gun_orbit_trace.gd" id="8_h4fw4"]
+[ext_resource type="Script" uid="uid://c804y26frd855" path="res://Scenes/elevator.gd" id="10_exi56"]
+[ext_resource type="Script" uid="uid://bxpsvdbpdms6l" path="res://Scenes/elevator_follow.gd" id="11_exi56"]
+[ext_resource type="Script" uid="uid://bubwi546a2gvy" path="res://Scenes/gun_orbit.gd" id="12_nnt18"]
+[ext_resource type="PackedScene" uid="uid://bkls0pnfqksoh" path="res://gun_orbit_follow_object.tscn" id="17_ewbju"]
+[ext_resource type="PackedScene" uid="uid://yqwqeks4t3r8" path="res://Scenes/purchace_ui.tscn" id="18_85qyi"]
+[ext_resource type="PackedScene" uid="uid://2pm5h0masax0" path="res://Player/Ship.tscn" id="18_iivbl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mwb40"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1phco"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rku1e")
+}],
+"loop": true,
+"name": &"100",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rfjv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rfjv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rfjv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rfjv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rfjv2")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_e2o6t"]
+_data = {
+"points": PackedVector2Array(70, 0, 0, 70, 120, 0, 70, 0, -70, 0, 0, 120, 0, 70, 0, -70, -120, 0, -70, 0, 70, 0, 0, -120, 0, -70, 0, 70, 120, 0)
+}
+point_count = 5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_feb5d"]
+
+[sub_resource type="Curve2D" id="Curve2D_mg4q0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 120)
+}
+point_count = 3
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_iivbl")
+
+[node name="Earth" type="Area2D" parent="."]
+script = ExtResource("1_o5yvi")
+HP = 10
+
+[node name="Earth_Collision" type="CollisionShape2D" parent="Earth"]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_mwb40")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Earth"]
+position = Vector2(0.665, -0.58)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_1phco")
+animation = &"explosion"
+
+[node name="MenuImage" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.6)
+z_index = -1
+texture = ExtResource("1_1l0tm")
+
+[node name="Game_Cam" type="Camera2D" parent="."]
+
+[node name="Path1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_e2o6t")
+
+[node name="Path1_Trace" type="Line2D" parent="Path1"]
+script = ExtResource("3_h4fw4")
+
+[node name="Path1_Follow" type="PathFollow2D" parent="Path1"]
+position = Vector2(120, 0)
+rotation = 1.5707964
+script = ExtResource("4_ldgsr")
+speed = 50.0
+
+[node name="Planet1" type="Area2D" parent="Path1/Path1_Follow" groups=["outer_planets"]]
+script = ExtResource("8_7nbq1")
+
+[node name="Planet1_Collisions" type="CollisionShape2D" parent="Path1/Path1_Follow/Planet1"]
+shape = SubResource("CircleShape2D_feb5d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path1/Path1_Follow/Planet1/Planet1_Collisions"]
+position = Vector2(0.195, 0.38)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("5_o5yvi")
+
+[node name="Elevator" type="Path2D" parent="Path1/Path1_Follow/Planet1" node_paths=PackedStringArray("target_object")]
+curve = SubResource("Curve2D_mg4q0")
+script = ExtResource("10_exi56")
+target_object = NodePath("../Planet1_Collisions")
+
+[node name="Elevator_Follow" type="PathFollow2D" parent="Path1/Path1_Follow/Planet1/Elevator"]
+position = Vector2(0, 120)
+rotation = -0.72511715
+rotates = false
+loop = false
+script = ExtResource("11_exi56")
+speed = 1.0
+
+[node name="GunOrbit" type="Path2D" parent="."]
+scale = Vector2(0.5, 0.5)
+curve = SubResource("Curve2D_e2o6t")
+script = ExtResource("12_nnt18")
+item_scene = null
+
+[node name="GunOrbit_Trace" type="Line2D" parent="GunOrbit"]
+script = ExtResource("8_h4fw4")
+
+[node name="GunOrbit_FollowObject" parent="GunOrbit" instance=ExtResource("17_ewbju")]
+
+[node name="Ship" parent="." instance=ExtResource("18_iivbl")]
+
+[node name="PurchaceUI" parent="." instance=ExtResource("18_85qyi")]
+position = Vector2(-525, 244)
+
+[connection signal="area_entered" from="Earth" to="Earth" method="_on_area_entered"]
+[connection signal="body_entered" from="Earth" to="Earth" method="_on_body_entered"]
+[connection signal="area_shape_entered" from="Path1/Path1_Follow/Planet1" to="Path1/Path1_Follow/Planet1" method="_on_area_shape_entered"]
+[connection signal="body_entered" from="Path1/Path1_Follow/Planet1" to="Path1/Path1_Follow/Planet1" method="_on_body_entered"]

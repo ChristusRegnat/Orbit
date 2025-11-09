@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://mao1pu1ldjj1"]
+[gd_scene load_steps=29 format=3 uid="uid://mao1pu1ldjj1"]
 
 [ext_resource type="Texture2D" uid="uid://blljrt7sgxjyo" path="res://Assets/BackgroundImage.jpg" id="1_1l0tm"]
 [ext_resource type="Script" uid="uid://blksffinkgr3t" path="res://Scenes/game.gd" id="1_iivbl"]
@@ -22,6 +22,13 @@
 [ext_resource type="Texture2D" uid="uid://dbmtluo3kkef8" path="res://Assets/gunC_still.png" id="14_85qyi"]
 [ext_resource type="Script" uid="uid://d3os1bsoh5egx" path="res://Scenes/Planets/Aether_Elevator.gd" id="15_vm72l"]
 [ext_resource type="PackedScene" uid="uid://2pm5h0masax0" path="res://Player/Ship.tscn" id="17_ewbju"]
+[ext_resource type="Script" uid="uid://r5172uk0xdig" path="res://Scenes/gun_orbit_trace.gd" id="8_h4fw4"]
+[ext_resource type="Script" uid="uid://c804y26frd855" path="res://Scenes/elevator.gd" id="10_exi56"]
+[ext_resource type="Script" uid="uid://bxpsvdbpdms6l" path="res://Scenes/elevator_follow.gd" id="11_exi56"]
+[ext_resource type="Script" uid="uid://nmf3brmes80f" path="res://gun_orbit.gd" id="12_nnt18"]
+[ext_resource type="PackedScene" uid="uid://bkls0pnfqksoh" path="res://gun_orbit_follow_object.tscn" id="17_ewbju"]
+[ext_resource type="PackedScene" uid="uid://yqwqeks4t3r8" path="res://Scenes/purchace_ui.tscn" id="18_85qyi"]
+[ext_resource type="PackedScene" uid="uid://2pm5h0masax0" path="res://Player/Ship.tscn" id="18_iivbl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mwb40"]
 
@@ -289,62 +296,17 @@ shape = SubResource("CircleShape2D_feb5d")
 [node name="GunOrbit" type="Path2D" parent="."]
 scale = Vector2(0.5, 0.5)
 curve = SubResource("Curve2D_e2o6t")
+script = ExtResource("12_nnt18")
 
 [node name="GunOrbit_Trace" type="Line2D" parent="GunOrbit"]
 script = ExtResource("8_h4fw4")
 
-[node name="GunOrbit_Follow" type="PathFollow2D" parent="GunOrbit"]
-position = Vector2(120, 0)
-rotation = 1.5707964
-script = ExtResource("9_ldgsr")
+[node name="GunOrbit_FollowObject" parent="GunOrbit" instance=ExtResource("17_ewbju")]
 
-[node name="Gun1" type="Area2D" parent="GunOrbit/GunOrbit_Follow"]
-script = ExtResource("10_ldgsr")
+[node name="Ship" parent="." instance=ExtResource("18_iivbl")]
 
-[node name="Gun1_Collisions" type="CollisionShape2D" parent="GunOrbit/GunOrbit_Follow/Gun1"]
-shape = SubResource("CircleShape2D_feb5d")
-
-[node name="Sprite2D" type="Sprite2D" parent="GunOrbit/GunOrbit_Follow/Gun1/Gun1_Collisions"]
-scale = Vector2(0.22, 0.22)
-texture = ExtResource("14_85qyi")
-
-[node name="Gun1Raycast" type="RayCast2D" parent="GunOrbit/GunOrbit_Follow/Gun1"]
-target_position = Vector2(0, -1000)
-collide_with_areas = true
-
-[node name="Gun1BulletTrace" type="Line2D" parent="GunOrbit/GunOrbit_Follow/Gun1/Gun1Raycast"]
-width = 5.0
-default_color = Color(0.4392157, 0.23137255, 0.65882355, 0.6666667)
-
-[node name="Gun1TracerTimer" type="Timer" parent="GunOrbit/GunOrbit_Follow/Gun1"]
-
-[node name="Gun2Orbit_Follow" type="PathFollow2D" parent="GunOrbit"]
-position = Vector2(-120.000015, 6.0838647e-05)
-rotation = -1.5707967
-progress = 380.31598
-script = ExtResource("9_ldgsr")
-
-[node name="Gun2" type="Area2D" parent="GunOrbit/Gun2Orbit_Follow"]
-script = ExtResource("11_o5yvi")
-
-[node name="Gun2_Collisions" type="CollisionShape2D" parent="GunOrbit/Gun2Orbit_Follow/Gun2"]
-shape = SubResource("CircleShape2D_feb5d")
-
-[node name="Sprite2D" type="Sprite2D" parent="GunOrbit/Gun2Orbit_Follow/Gun2/Gun2_Collisions"]
-scale = Vector2(0.22, 0.22)
-texture = ExtResource("14_85qyi")
-
-[node name="Gun2Raycast" type="RayCast2D" parent="GunOrbit/Gun2Orbit_Follow/Gun2"]
-target_position = Vector2(0, -1000)
-collide_with_areas = true
-
-[node name="Gun2BulletTrace" type="Line2D" parent="GunOrbit/Gun2Orbit_Follow/Gun2/Gun2Raycast"]
-width = 5.0
-default_color = Color(0.4392157, 0.23137255, 0.65882355, 0.6666667)
-
-[node name="Gun2TracerTimer" type="Timer" parent="GunOrbit/Gun2Orbit_Follow/Gun2"]
-
-[node name="Ship" parent="." instance=ExtResource("17_ewbju")]
+[node name="PurchaceUI" parent="." instance=ExtResource("18_85qyi")]
+position = Vector2(-525, 244)
 
 [node name="MenuImage" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.6)
