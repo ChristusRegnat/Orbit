@@ -1,3 +1,4 @@
+# resourceDisplay.gd
 extends PanelContainer
 
 # Resource data
@@ -8,13 +9,7 @@ var resource_icon: Texture2D
 # Signal to communicate with parent menu
 signal resource_changed(resource_name, new_amount)
 
-# We'll use direct node paths to avoid reference issues
 func _ready():
-	# Debug: Print to verify we have the right nodes
-	print("ResourceDisplay _ready called for: ", resource_name)
-	print(" - Icon node exists: ", has_node("HBoxContainer/Icon"))
-	print(" - NameLabel node exists: ", has_node("HBoxContainer/NameLabel"))
-	
 	# Set up the display
 	$HBoxContainer/NameLabel.text = resource_name
 	update_display()
@@ -22,9 +17,6 @@ func _ready():
 	# Set the icon if we have one
 	if resource_icon:
 		$HBoxContainer/Icon.texture = resource_icon
-		print("Set icon for ", resource_name)
-	else:
-		print("No icon for ", resource_name)
 	
 	# Connect button signals
 	$HBoxContainer/DecreaseButton.pressed.connect(_on_decrease_pressed)
@@ -66,10 +58,9 @@ func apply_styling():
 	$HBoxContainer/IncreaseButton.add_theme_stylebox_override("normal", button_style)
 	
 	# Ensure the Icon TextureRect is visible and properly sized
-	if has_node("HBoxContainer/Icon"):
-		$HBoxContainer/Icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
-		$HBoxContainer/Icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		$HBoxContainer/Icon.custom_minimum_size = Vector2(32, 32)  # Force a minimum size
+	$HBoxContainer/Icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	$HBoxContainer/Icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	$HBoxContainer/Icon.custom_minimum_size = Vector2(32, 32)
 
 func update_display():
 	$HBoxContainer/AmountLabel.text = str(current_amount)
@@ -77,12 +68,18 @@ func update_display():
 func _on_decrease_pressed():
 	current_amount = max(0, current_amount - 1)
 	update_display()
+	print("ResourceDisplay: Decrease pressed - ", resource_name, " = ", current_amount)
 	resource_changed.emit(resource_name, current_amount)
+	GlobalResource.set_resource(resource_name, current_amount)
+	print("Global ", GlobalResource.get_resource(resource_name))
 
 func _on_increase_pressed():
 	current_amount += 1
 	update_display()
+	print("ResourceDisplay: Increase pressed - ", resource_name, " = ", current_amount)
 	resource_changed.emit(resource_name, current_amount)
+	GlobalResource.set_resource(resource_name, current_amount)
+	print("Global ", GlobalResource.get_resource(resource_name))
 
 # Function to set the resource from outside
 func set_resource(name: String, amount: int, icon: Texture2D = null):
@@ -90,18 +87,13 @@ func set_resource(name: String, amount: int, icon: Texture2D = null):
 	current_amount = amount
 	resource_icon = icon
 	
-	print("Setting resource: ", name, " with icon: ", icon)
-	
-	if has_node("HBoxContainer/NameLabel"):
+	if $HBoxContainer/NameLabel:
 		$HBoxContainer/NameLabel.text = resource_name
 		update_display()
 	
-	if icon and has_node("HBoxContainer/Icon"):
+	if icon and $HBoxContainer/Icon:
 		$HBoxContainer/Icon.texture = icon
-		print("Icon texture set for ", resource_name)
 
 # Getter function for other scripts to access the current amount
 func get_amount() -> int:
 	return current_amount
-
-#Utilized DeepSeek for GodotScript programming assistance
