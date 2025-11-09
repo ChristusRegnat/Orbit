@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://5jbyqno5s65j"]
+
+[ext_resource type="Texture2D" uid="uid://7g41vgbmixry" path="res://tut1.png" id="1_7ea5i"]
+[ext_resource type="AudioStream" uid="uid://w6o2kfltnox3" path="res://Sounds/GunC sound-[AudioTrimmer.com].mp3" id="2_wse8i"]
+
+[node name="Tut1" type="Node2D"]
+
+[node name="Tut1" type="Sprite2D" parent="."]
+position = Vector2(576.00006, 326)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("1_7ea5i")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Tut1"]
+stream = ExtResource("2_wse8i")
