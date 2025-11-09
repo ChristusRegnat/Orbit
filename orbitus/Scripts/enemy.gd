@@ -13,4 +13,3 @@ func _physics_process(delta):
 		if collision:
 			collided = true
 			queue_free()
-			

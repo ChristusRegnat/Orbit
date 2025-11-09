@@ -92,18 +92,26 @@ point_count = 3
 script = ExtResource("1_iivbl")
 
 [node name="Earth" type="Area2D" parent="."]
+collision_mask = 3
 script = ExtResource("1_o5yvi")
 HP = 10
 
 [node name="Earth_Collision" type="CollisionShape2D" parent="Earth"]
-scale = Vector2(3, 3)
+scale = Vector2(3.315, 3.315)
 shape = SubResource("CircleShape2D_mwb40")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Earth"]
 position = Vector2(0.665, -0.58)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_1phco")
-animation = &"explosion"
+animation = &"100"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Earth"]
+scale = Vector2(0.455, 0.455)
+
+[node name="Earth_Collision" type="CollisionShape2D" parent="Earth/StaticBody2D"]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_mwb40")
 
 [node name="Path1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_e2o6t")
@@ -141,6 +149,11 @@ ignore_texture_size = true
 curve = SubResource("Curve2D_mg4q0")
 script = ExtResource("10_exi56")
 target_object = NodePath("../Planet1_Collisions")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Path1/Path1_Follow/Planet1"]
+
+[node name="Planet1_Collisions" type="CollisionShape2D" parent="Path1/Path1_Follow/Planet1/StaticBody2D"]
+shape = SubResource("CircleShape2D_feb5d")
 
 [node name="Path2" type="Path2D" parent="."]
 scale = Vector2(1.52, 1.52)
@@ -181,6 +194,11 @@ curve = SubResource("Curve2D_mg4q0")
 script = ExtResource("11_7t8sx")
 target_object = NodePath("../Planet1_Collisions")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Path2/Path1_Follow/Planet1"]
+
+[node name="Planet1_Collisions" type="CollisionShape2D" parent="Path2/Path1_Follow/Planet1/StaticBody2D"]
+shape = SubResource("CircleShape2D_feb5d")
+
 [node name="Path3" type="Path2D" parent="."]
 scale = Vector2(2.135, 2.135)
 curve = SubResource("Curve2D_e2o6t")
@@ -220,6 +238,11 @@ curve = SubResource("Curve2D_mg4q0")
 script = ExtResource("13_mg4q0")
 target_object = NodePath("../Planet1_Collisions")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Path3/Path1_Follow/Planet1"]
+
+[node name="Planet1_Collisions" type="CollisionShape2D" parent="Path3/Path1_Follow/Planet1/StaticBody2D"]
+shape = SubResource("CircleShape2D_feb5d")
+
 [node name="Path4" type="Path2D" parent="."]
 scale = Vector2(3.015, 3.015)
 curve = SubResource("Curve2D_e2o6t")
@@ -257,6 +280,11 @@ ignore_texture_size = true
 curve = SubResource("Curve2D_mg4q0")
 script = ExtResource("15_vm72l")
 target_object = NodePath("../Planet1_Collisions")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Path4/Path1_Follow/Planet1"]
+
+[node name="Planet1_Collisions" type="CollisionShape2D" parent="Path4/Path1_Follow/Planet1/StaticBody2D"]
+shape = SubResource("CircleShape2D_feb5d")
 
 [node name="GunOrbit" type="Path2D" parent="."]
 scale = Vector2(0.5, 0.5)

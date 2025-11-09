@@ -1,6 +1,7 @@
 extends Node2D
 const Enemy_Ship_Scene: PackedScene = preload("res://Scenes/enemy_L.tscn")
 const Bottom_Resource_Bar: PackedScene = preload("res://BottomResourceBar.tscn")
+const Game_HUD: PackedScene = preload("res://GameHUD.tscn")
 var counter = 0
 var rand_x = 0
 var rand_y = 0
@@ -9,7 +10,14 @@ func _ready():
 	randomize()
 	# Summon Bottom Resource Bar
 	var resource_bar = Bottom_Resource_Bar.instantiate()
+	resource_bar.position = Vector2(-576,-324)
+	resource_bar.scale = Vector2(0.8, 0.8)
 	add_child(resource_bar)
+	# Summon HUD
+	var GameHUD = Game_HUD.instantiate()
+	GameHUD.position = Vector2(-630,210)
+	
+	add_child(GameHUD)
 	
 func enemy_spawns():
 		# Generate rand_x
