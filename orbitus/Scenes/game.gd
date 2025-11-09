@@ -1,5 +1,5 @@
 extends Node2D
-const Enemy_Ship_Scene: PackedScene = preload("res://Scenes/enemy.tscn")
+const Enemy_Ship_Scene: PackedScene = preload("res://Scenes/enemy_L.tscn")
 
 func _ready():
 	spawn_enemy()
